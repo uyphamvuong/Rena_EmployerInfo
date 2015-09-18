@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9438299A-BBD7-4C20-BB1A-7D1D48C063FF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EmployerInfo</RootNamespace>
+    <AssemblyName>EmployerInfo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>info_32.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DllWebBrowser">
+      <HintPath>..\..\DllWebBrowser\DllWebBrowser\bin\Release\DllWebBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamCMS.Config">
+      <HintPath>..\..\DreamCMS.Config\bin\Release\DreamCMS.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.3.0.0.2\lib\net20\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormSub\vlam24hNTD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\vlam24hNTD.Designer.cs">
+      <DependentUpon>vlam24hNTD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSub\thuongmai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\thuongmai.Designer.cs">
+      <DependentUpon>thuongmai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSub\danhbadoanhnghiep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\danhbadoanhnghiep.Designer.cs">
+      <DependentUpon>danhbadoanhnghiep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSub\ctyvietnam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\ctyvietnam.Designer.cs">
+      <DependentUpon>ctyvietnam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSub\thongtincongty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\thongtincongty.Designer.cs">
+      <DependentUpon>thongtincongty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSub\_WebFormPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\_WebFormPopup.Designer.cs">
+      <DependentUpon>_WebFormPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FuncHelp.cs" />
+    <Compile Include="FormSub\vieclam24h.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\vieclam24h.Designer.cs">
+      <DependentUpon>vieclam24h.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSub\_Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\_Home.Designer.cs">
+      <DependentUpon>_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessBarEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProcessBarEdit.Designer.cs">
+      <DependentUpon>ProcessBarEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormSub\thuongmai.resx">
+      <DependentUpon>thuongmai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\danhbadoanhnghiep.resx">
+      <DependentUpon>danhbadoanhnghiep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\ctyvietnam.resx">
+      <DependentUpon>ctyvietnam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\thongtincongty.resx">
+      <DependentUpon>thongtincongty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\vieclam24h.resx">
+      <DependentUpon>vieclam24h.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\vlam24hNTD.resx">
+      <DependentUpon>vlam24hNTD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\_Home.resx">
+      <DependentUpon>_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\_WebFormPopup.resx">
+      <DependentUpon>_WebFormPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcessBarEdit.resx">
+      <DependentUpon>ProcessBarEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="info_32.ico" />
+    <None Include="Resources\gnome_list_remove.png" />
+    <None Include="Resources\gnome_window_close.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\info_32.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
