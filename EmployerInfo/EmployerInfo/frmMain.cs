@@ -60,21 +60,24 @@ namespace EmployerInfo
             switch(listLeft.SelectedItems[0].Index)
             {
                 case 0:
-                    frm = new frmM1();                    
+                    frm = new Home();        
                     break;
                 case 1:
-                    frm = new frmM2();
+                    frm = new frmM1();                    
                     break;
                 case 2:
-                    frm = new frmM3();
+                    frm = new frmM2();
                     break;
                 case 3:
-                    frm = new frmM4();
+                    frm = new frmM3();
                     break;
                 case 4:
-                    frm = new frmM5();
+                    frm = new frmM4();
                     break;
                 case 5:
+                    frm = new frmM5();
+                    break;
+                case 6:
                     frm = new frmM6();
                     break;
             }

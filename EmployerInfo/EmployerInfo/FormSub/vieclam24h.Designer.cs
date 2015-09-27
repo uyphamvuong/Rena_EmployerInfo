@@ -40,13 +40,13 @@
             this.cbxSlg = new System.Windows.Forms.CheckBox();
             this.stt1 = new System.Windows.Forms.Label();
             this.stt2 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.stt3 = new System.Windows.Forms.Label();
             this.stt4 = new System.Windows.Forms.Label();
             this.cbxCategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbxPortList = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.chxGetAllCategory = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,39 +105,14 @@
             // 
             this.chkListBox.FormattingEnabled = true;
             this.chkListBox.Items.AddRange(new object[] {
-            "Lượt xem",
-            "Mã",
-            "Ngày làm mới",
-            "Vị trí tuyển dụng",
-            "Chức vụ",
-            "Số năm kinh nghiệm",
-            "Ngành nghề",
-            "Yêu cầu bằng cấp",
-            "Hình thức làm việc",
-            "Yêu cầu giới tính",
-            "Địa điểm làm việc",
-            "Yêu cầu độ tuổi",
-            "Mức lương",
-            "Số lượng cần tuyển",
-            "Mô tả công việc",
-            "Quyền lợi được hưởng",
-            "Yêu cầu khác",
-            "Hồ sơ bao gồm",
-            "Hạn nộp hồ sơ",
-            "Hình thức nộp hồ sơ",
-            "Người liên hệ",
-            "Địa chỉ liên hệ",
-            "Email liên hệ",
-            "Điện thoại liên hệ",
             "Tên công ty",
             "Địa chỉ",
-            "Website",
+            "Quy mô",
             "Điện thoại",
-            "Giới thiệu",
-            "Quy mô công ty"});
+            "Danh mục nghề"});
             this.chkListBox.Location = new System.Drawing.Point(40, 139);
             this.chkListBox.Name = "chkListBox";
-            this.chkListBox.Size = new System.Drawing.Size(191, 276);
+            this.chkListBox.Size = new System.Drawing.Size(191, 208);
             this.chkListBox.TabIndex = 11;
             // 
             // chxSelectAll
@@ -221,14 +196,6 @@
             this.stt2.Text = "Số trang của các danh mục: {0:##.##}";
             this.stt2.Visible = false;
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(253, 403);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(395, 12);
-            this.progressBar1.TabIndex = 20;
-            this.progressBar1.Visible = false;
-            // 
             // stt3
             // 
             this.stt3.AutoSize = true;
@@ -255,7 +222,7 @@
             // 
             // cbxCategory
             // 
-            this.cbxCategory.DisplayMember = "Name";
+            this.cbxCategory.DisplayMember = "NameWithCount";
             this.cbxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategory.Enabled = false;
             this.cbxCategory.ForeColor = System.Drawing.Color.Black;
@@ -303,18 +270,28 @@
             this.label4.TabIndex = 26;
             this.label4.Text = "Cổng lấy dữ liệu";
             // 
+            // chxGetAllCategory
+            // 
+            this.chxGetAllCategory.AutoSize = true;
+            this.chxGetAllCategory.Location = new System.Drawing.Point(467, 183);
+            this.chxGetAllCategory.Name = "chxGetAllCategory";
+            this.chxGetAllCategory.Size = new System.Drawing.Size(170, 20);
+            this.chxGetAllCategory.TabIndex = 27;
+            this.chxGetAllCategory.Text = "Lấy tất cả các danh mục";
+            this.chxGetAllCategory.UseVisualStyleBackColor = true;
+            // 
             // frmM1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 427);
+            this.ClientSize = new System.Drawing.Size(663, 368);
+            this.Controls.Add(this.chxGetAllCategory);
             this.Controls.Add(this.cbxPortList);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxCategory);
             this.Controls.Add(this.stt4);
             this.Controls.Add(this.stt3);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.stt2);
             this.Controls.Add(this.stt1);
             this.Controls.Add(this.cbxSlg);
@@ -353,13 +330,13 @@
         private System.Windows.Forms.CheckBox cbxSlg;
         private System.Windows.Forms.Label stt1;
         private System.Windows.Forms.Label stt2;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label stt3;
         private System.Windows.Forms.Label stt4;
         private System.Windows.Forms.ComboBox cbxCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbxPortList;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chxGetAllCategory;
 
     }
 }

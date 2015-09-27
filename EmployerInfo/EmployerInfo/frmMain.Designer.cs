@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("vieclam.24h.com.vn", 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("thongtincongty.com", 1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("ctyvietnam.com", "favicon.png");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("danhbadoanhnghiep.vn", "favicon.png");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("thuongmai.vn", "favicon.png");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("vlam24h(NTD)", "icon-viec-lam.gif");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Trang chủ", "favicon.png");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("vieclam.24h.com.vn", 0);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("thongtincongty.com", 1);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("ctyvietnam.com", "favicon.png");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("danhbadoanhnghiep.vn", "favicon.png");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("thuongmai.vn", "favicon.png");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("vlam24h(NTD)", "icon-viec-lam.gif");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.splitP = new System.Windows.Forms.SplitContainer();
             this.listLeft = new System.Windows.Forms.ListView();
@@ -92,7 +93,8 @@
             listViewItem3,
             listViewItem4,
             listViewItem5,
-            listViewItem6});
+            listViewItem6,
+            listViewItem7});
             this.listLeft.LargeImageList = this.imageList1;
             this.listLeft.Location = new System.Drawing.Point(0, 0);
             this.listLeft.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);

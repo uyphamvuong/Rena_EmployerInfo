@@ -24,8 +24,6 @@ namespace EmployerInfo
         string host = "http://vieclam.24h.com.vn";
         string CategoryPagelink = "";
         int CategoryPagetotal = 0;
-        WebBrowser wbr = null;
-        WebFormPopup wfp = new WebFormPopup();
         DataTable dtListCategory = new DataTable();
         List<string> ArrayDetailLink = new List<string>();
         DataTable dt = new DataTable();
@@ -390,7 +388,6 @@ namespace EmployerInfo
             }
 
             // FINISH
-            wfp.Hide();
             btnRun.Text = "GET INFO";
             IsRun = false;
             (Application.OpenForms["frmMain"] as frmMain).SetPercentProcess(15);
