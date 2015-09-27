@@ -45,12 +45,9 @@
             this.stt4 = new System.Windows.Forms.Label();
             this.cbxCategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.gbChoosePort = new System.Windows.Forms.GroupBox();
-            this.rbtnChooseAll = new System.Windows.Forms.RadioButton();
-            this.rbtnChooseOne = new System.Windows.Forms.RadioButton();
             this.cbxPortList = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).BeginInit();
-            this.gbChoosePort.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtpMin
@@ -260,6 +257,7 @@
             // 
             this.cbxCategory.DisplayMember = "Name";
             this.cbxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCategory.Enabled = false;
             this.cbxCategory.ForeColor = System.Drawing.Color.Black;
             this.cbxCategory.IntegralHeight = false;
             this.cbxCategory.ItemHeight = 16;
@@ -280,62 +278,38 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "Danh mục";
             // 
-            // gbChoosePort
-            // 
-            this.gbChoosePort.Controls.Add(this.cbxPortList);
-            this.gbChoosePort.Controls.Add(this.rbtnChooseOne);
-            this.gbChoosePort.Controls.Add(this.rbtnChooseAll);
-            this.gbChoosePort.Location = new System.Drawing.Point(251, 85);
-            this.gbChoosePort.Name = "gbChoosePort";
-            this.gbChoosePort.Size = new System.Drawing.Size(386, 89);
-            this.gbChoosePort.TabIndex = 25;
-            this.gbChoosePort.TabStop = false;
-            this.gbChoosePort.Text = "Cổng lấy dữ liệu";
-            // 
-            // rbtnChooseAll
-            // 
-            this.rbtnChooseAll.AutoSize = true;
-            this.rbtnChooseAll.Checked = true;
-            this.rbtnChooseAll.Location = new System.Drawing.Point(15, 27);
-            this.rbtnChooseAll.Name = "rbtnChooseAll";
-            this.rbtnChooseAll.Size = new System.Drawing.Size(126, 20);
-            this.rbtnChooseAll.TabIndex = 0;
-            this.rbtnChooseAll.TabStop = true;
-            this.rbtnChooseAll.Text = "Lấy tất cả 4 cổng";
-            this.rbtnChooseAll.UseVisualStyleBackColor = true;
-            // 
-            // rbtnChooseOne
-            // 
-            this.rbtnChooseOne.AutoSize = true;
-            this.rbtnChooseOne.Location = new System.Drawing.Point(15, 53);
-            this.rbtnChooseOne.Name = "rbtnChooseOne";
-            this.rbtnChooseOne.Size = new System.Drawing.Size(110, 20);
-            this.rbtnChooseOne.TabIndex = 1;
-            this.rbtnChooseOne.Text = "Lấy theo cổng";
-            this.rbtnChooseOne.UseVisualStyleBackColor = true;
-            this.rbtnChooseOne.CheckedChanged += new System.EventHandler(this.rbtnChooseOne_CheckedChanged);
-            // 
             // cbxPortList
             // 
             this.cbxPortList.DisplayMember = "Name";
             this.cbxPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxPortList.Enabled = false;
             this.cbxPortList.ForeColor = System.Drawing.Color.Black;
             this.cbxPortList.IntegralHeight = false;
             this.cbxPortList.ItemHeight = 16;
-            this.cbxPortList.Location = new System.Drawing.Point(148, 52);
+            this.cbxPortList.Location = new System.Drawing.Point(251, 144);
             this.cbxPortList.MaxDropDownItems = 15;
             this.cbxPortList.Name = "cbxPortList";
-            this.cbxPortList.Size = new System.Drawing.Size(232, 24);
+            this.cbxPortList.Size = new System.Drawing.Size(236, 24);
             this.cbxPortList.TabIndex = 26;
             this.cbxPortList.ValueMember = "Link";
+            this.cbxPortList.SelectedIndexChanged += new System.EventHandler(this.cbxPortList_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(248, 125);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(119, 16);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Cổng lấy dữ liệu";
             // 
             // frmM1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 427);
-            this.Controls.Add(this.gbChoosePort);
+            this.Controls.Add(this.cbxPortList);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxCategory);
             this.Controls.Add(this.stt4);
@@ -360,8 +334,6 @@
             this.Load += new System.EventHandler(this.frmM1_Load);
             this.Shown += new System.EventHandler(this.frmM1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).EndInit();
-            this.gbChoosePort.ResumeLayout(false);
-            this.gbChoosePort.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,10 +358,8 @@
         private System.Windows.Forms.Label stt4;
         private System.Windows.Forms.ComboBox cbxCategory;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox gbChoosePort;
         private System.Windows.Forms.ComboBox cbxPortList;
-        private System.Windows.Forms.RadioButton rbtnChooseOne;
-        private System.Windows.Forms.RadioButton rbtnChooseAll;
+        private System.Windows.Forms.Label label4;
 
     }
 }

@@ -79,7 +79,7 @@ namespace EmployerInfo
             IsRun = false;
             if (cbxNewItem.Checked) { txtLastID.Text = LastId; Set_LastId(LastId); }
             progressBar1.Visible = false;
-            string filename = "Export_thongtincongty.xlsx";
+            string filename = @"Export\Export_thongtincongty.xlsx";
             Dictionary<int, int> colw = new Dictionary<int, int>();
             colw.Add(1, 70);
             FuncHelp.ExportExcel(dt, filename, colw);

@@ -42,6 +42,8 @@
             this.pMain = new System.Windows.Forms.Panel();
             this.lbLeft = new System.Windows.Forms.Label();
             this.pTop = new System.Windows.Forms.Panel();
+            this.btnSetting = new System.Windows.Forms.PictureBox();
+            this.btnUpdate = new System.Windows.Forms.PictureBox();
             this.btnHide = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.processBarEdit1 = new EmployerInfo.ProcessBarEdit();
@@ -50,6 +52,8 @@
             this.splitP.Panel2.SuspendLayout();
             this.splitP.SuspendLayout();
             this.pTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSetting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnUpdate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -136,6 +140,8 @@
             // pTop
             // 
             this.pTop.BackColor = System.Drawing.Color.White;
+            this.pTop.Controls.Add(this.btnSetting);
+            this.pTop.Controls.Add(this.btnUpdate);
             this.pTop.Controls.Add(this.btnHide);
             this.pTop.Controls.Add(this.btnClose);
             this.pTop.Controls.Add(this.lbLeft);
@@ -146,6 +152,28 @@
             this.pTop.TabIndex = 1;
             this.pTop.Paint += new System.Windows.Forms.PaintEventHandler(this.pTop_Paint);
             this.pTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Object_MouseDown);
+            // 
+            // btnSetting
+            // 
+            this.btnSetting.Image = global::EmployerInfo.Properties.Resources.gnome_system_run;
+            this.btnSetting.Location = new System.Drawing.Point(719, 3);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(39, 39);
+            this.btnSetting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnSetting.TabIndex = 5;
+            this.btnSetting.TabStop = false;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Image = global::EmployerInfo.Properties.Resources.gnome_software_update_available;
+            this.btnUpdate.Location = new System.Drawing.Point(674, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(39, 39);
+            this.btnUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnUpdate.TabIndex = 4;
+            this.btnUpdate.TabStop = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnHide
             // 
@@ -193,7 +221,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Employer Info 1.0";
+            this.Text = "Employer Info 1.2";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.splitP.Panel1.ResumeLayout(false);
@@ -202,6 +230,8 @@
             this.splitP.ResumeLayout(false);
             this.pTop.ResumeLayout(false);
             this.pTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSetting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnUpdate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.ResumeLayout(false);
@@ -219,6 +249,8 @@
         private System.Windows.Forms.PictureBox btnClose;
         private System.Windows.Forms.PictureBox btnHide;
         private ProcessBarEdit processBarEdit1;
+        private System.Windows.Forms.PictureBox btnSetting;
+        private System.Windows.Forms.PictureBox btnUpdate;
     }
 }
 

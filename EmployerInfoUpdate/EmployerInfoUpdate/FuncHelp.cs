@@ -10,7 +10,7 @@ using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
-namespace EmployerInfo
+namespace EmployerInfoUpdate
 {
     class FuncHelp
     {
@@ -19,12 +19,12 @@ namespace EmployerInfo
             string s_ = "";
             using (var webpage = new WebClient())
             {
-                webpage.Headers[HttpRequestHeader.UserAgent] = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2";
+                //webpage.Headers[HttpRequestHeader.UserAgent] = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2";
                 webpage.Encoding = System.Text.Encoding.UTF8;
                 try
                 {
                     s_ = webpage.DownloadString(source_url);
-                    if (delete_breakline) { s_ = s_.Replace("\n", "").Replace("\t", "").Replace("\"", "'").Replace("  ", " ").Replace("  ", " ").Replace("  ", " "); }
+                    if (delete_breakline) { s_ = s_.Replace("\r","").Replace("\n", "").Replace("\t", "").Replace("\"", "'").Replace("  ", " ").Replace("  ", " ").Replace("  ", " "); }
                 }
                 catch (Exception ex)
                 {

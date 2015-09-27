@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ namespace EmployerInfo
     {
         public frmMain()
         {
+            if (!CheckIsSingleInstance()) { Close(); }
             InitializeComponent();
         }        
 
@@ -135,7 +137,36 @@ namespace EmployerInfo
 
         #endregion
 
-        
+        bool CheckIsSingleInstance()
+        {
+            string procName = Process.GetCurrentProcess().ProcessName;
+            if (Process.GetProcessesByName(procName).Length > 1)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        string AppPath = Application.StartupPath;
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if(File.Exists(AppPath+@"\Update.exe"))
+            { 
+                Process.Start("Update.exe");
+                Close(); 
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Chức năng này đang hoàn thiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         
         

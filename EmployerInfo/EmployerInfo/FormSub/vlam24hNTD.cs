@@ -49,7 +49,7 @@ namespace EmployerInfo
 
 
             string s = FuncHelp.GetSource(host + "/nha-tuyen-dung");
-            s = FuncHelp.CutFromTo(s, "id='gate_nganhnghe_abc'", "id='gate_nganhnghe_group'");
+            s = FuncHelp.CutFromTo(s, "id='gate_nganhnghe_abc'", "id='viec_kinhnghiem_hocvan_mucluong'");
 
             while (s.IndexOf("nganhnghe_item") > 0)
             {
@@ -162,7 +162,7 @@ namespace EmployerInfo
         {
             string url = host + "/trang-in-ho-so/nhan-vien-" + link + ".html";
 
-            string s = FuncHelp.GetSourceWithCookie(url, cookieContainer);            
+            string s = FuncHelp.GetSourceWithCookie(url,ref cookieContainer);            
             s = FuncHelp.CutFrom(s, "box_chi_tiet_cong_viec");
 
             string hovaten = FuncHelp.CutFromTo(s, "<span class='name font24 lh_12 bold'>","</span>");
@@ -394,7 +394,7 @@ namespace EmployerInfo
             btnRun.Text = "GET INFO";
             IsRun = false;
             (Application.OpenForms["frmMain"] as frmMain).SetPercentProcess(15);
-            string filename = "Export_NTDVieclam24h "+ dtListCategory.Rows[cbxCategory.SelectedIndex]["Name"] +".xlsx";
+            string filename = @"Export\Export_NTDVieclam24h " + dtListCategory.Rows[cbxCategory.SelectedIndex]["Name"] + ".xlsx";
             Dictionary<int, int> colw = new Dictionary<int, int>();
             colw.Add(1, 35);
             FuncHelp.ExportExcel(dt, filename, colw);

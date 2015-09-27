@@ -24,6 +24,18 @@ namespace EmployerInfo
             numMaxSlg.Value = 1000;
             dt_Category.Columns.Add("Link");
             dt_Category.Columns.Add("Name");
+            dt_Category.Columns.Add("IdCategory");
+            dt_Category.Columns.Add("CountItem");
+
+            dt_Port.Columns.Add("Link");
+            dt_Port.Columns.Add("Name");
+            dt_Port.Rows.Add(host + "/viec-lam-quan-ly", "Việc làm quản lý");
+            dt_Port.Rows.Add(host + "/viec-lam-chuyen-mon", "Việc làm theo chuyên môn");
+            dt_Port.Rows.Add(host + "/viec-lam-lao-dong-pho-thong", "Lao động phổ thông/Nghề");
+            dt_Port.Rows.Add(host + "/viec-lam-sinh-vien-ban-thoi-gian", "Sinh viên - Bán thời gian");
+            cbxPortList.DataSource = dt_Port;
+            cbxPortList.ValueMember = "Link";
+            cbxPortList.DisplayMember = "Name";
             
         }
 
@@ -54,7 +66,9 @@ namespace EmployerInfo
         List<string> ArrayPageLinkFromCategory = new List<string>();
         List<string> ArrayDetailLinkFromPage = new List<string>();
         DataTable dt_Category = new DataTable();
+        DataTable dt_Port = new DataTable();
         DataTable dt = new DataTable();
+        CookieContainer cookieContainer = new CookieContainer();
 
         private void btnRun_Click(object sender, EventArgs e)
         {
@@ -104,7 +118,7 @@ namespace EmployerInfo
             btnRun.Text = "GET INFO";
             IsRun = false;
             progressBar1.Visible = false;
-            string filename = "Export_vieclam24h.xlsx";
+            string filename = @"Export\Export_vieclam24h.xlsx";
             FuncHelp.ExportExcel(dt, filename);
 
             if (MessageBox.Show("Lưu dữ liệu thành công \n\nBạn có muốn mở file đã lưu?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -137,27 +151,31 @@ namespace EmployerInfo
             btnRun.Enabled = false;
             Application.DoEvents();
 
-            string s = FuncHelp.GetSource(host).Replace(" class ='div_40' style='display:none;'","");
+            string s = FuncHelp.GetSourceWithCookie(cbxPortList.SelectedValue as string, ref cookieContainer);
+            s = FuncHelp.CutFromTo(s, "id='gate_nganhnghe_abc'", "id='gate_tinhthanh_sl'");
 
-            if (s.IndexOf("category'><li><a href='") > 0)
-                s = FuncHelp.CutFrom(s, "<div id='div_ds_nganh_nghe_trang_chu_ntv'>");
-
-            while (s.IndexOf("category'><li><a href='") >= 0)
+            while (s.IndexOf("nganhnghe_item") > 0)
             {
-                string l = host+FuncHelp.CutFromTo(s, "category'><li><a href='", "' title='");
-                string n = FuncHelp.CutFromTo(s, "' title='", "'").Replace("Tìm việc làm","").Trim();
-                string c = FuncHelp.CutFromTo(s, "<span class='orangeTxt'>", "</span>");
-                n = WebUtility.HtmlDecode(n);
-                dt_Category.Rows.Add(l, n + " (" + c + ")");
-                s = FuncHelp.CutFrom(s, "</ul>");
+                s = FuncHelp.CutFrom(s, "nganhnghe_item");
+                string temp = FuncHelp.CutFromTo(s, "<a href", "</a>");
+                string strLink = FuncHelp.CutFromTo(temp, "='", "' class");
+                temp = FuncHelp.CutFrom(temp, ">");
+                string strName = FuncHelp.CutTo(temp, "<span").Trim();
+                string strCount = FuncHelp.CutFromTo(temp, ">(", ")</span>");
+                strName = WebUtility.HtmlDecode(strName);
+                //vieclam.24h.com.vn/tim-kiem-viec-lam-nhanh/?hdn_nganh_nghe_cap1=??
+                string strIdCategory = strLink.Substring(strLink.LastIndexOf("-c") + 2, strLink.Length - strLink.LastIndexOf("-c") - ".html".Length - 2);
+                strLink = "/tim-kiem-viec-lam-nhanh/?hdn_nganh_nghe_cap1=?" + strIdCategory;
+                dt_Category.Rows.Add(strLink, strName + " (" + strCount + ")", strIdCategory, strCount.Replace(",", "").Replace(".", ""));
             }
 
             dt_Category.DefaultView.Sort = "Name ASC";
             dt_Category = dt_Category.DefaultView.ToTable();          
 
             cbxCategory.DataSource = dt_Category;
-            stt1.Visible = false;
+            stt1.Text = "Tổng danh mục đã nhận: " + dt_Category.Rows.Count.ToString();
             btnRun.Enabled = true;
+            cbxCategory.Enabled = true;
         }
 
         void Get_LinkPageFromCategory(string link)
@@ -315,12 +333,12 @@ namespace EmployerInfo
         private void frmM1_Shown(object sender, EventArgs e)
         {
             Application.DoEvents();
-            Get_ArrayLinkCategory();
+            
         }
 
-        private void rbtnChooseOne_CheckedChanged(object sender, EventArgs e)
+        private void cbxPortList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbxPortList.Enabled = rbtnChooseOne.Checked;
+            Get_ArrayLinkCategory();
         }
 
     }

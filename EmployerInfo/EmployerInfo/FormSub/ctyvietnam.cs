@@ -79,7 +79,7 @@ namespace EmployerInfo
             btnRun.Text = "GET INFO";
             IsRun = false;
             progressBar1.Visible = false;
-            string filename = "Export_ctyvietnam.xlsx";
+            string filename = @"Export\Export_ctyvietnam.xlsx";
             Dictionary<int, int> colw = new Dictionary<int, int>();
             colw.Add(1, 70);
             FuncHelp.ExportExcel(dt, filename, colw);
