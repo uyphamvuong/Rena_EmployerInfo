@@ -36,6 +36,9 @@
             System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("danhbadoanhnghiep.vn", "favicon.png");
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("thuongmai.vn", "favicon.png");
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("vlam24h(NTD)", "icon-viec-lam.gif");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            "trangvangvietnam.com"}, "favicon.png", System.Drawing.Color.Black, System.Drawing.Color.White, null);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("vieclam.tv", "favicon.png");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.splitP = new System.Windows.Forms.SplitContainer();
             this.listLeft = new System.Windows.Forms.ListView();
@@ -87,6 +90,7 @@
             this.listLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listLeft.FullRowSelect = true;
+            listViewItem8.StateImageIndex = 0;
             this.listLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
@@ -94,7 +98,9 @@
             listViewItem4,
             listViewItem5,
             listViewItem6,
-            listViewItem7});
+            listViewItem7,
+            listViewItem8,
+            listViewItem9});
             this.listLeft.LargeImageList = this.imageList1;
             this.listLeft.Location = new System.Drawing.Point(0, 0);
             this.listLeft.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
@@ -223,7 +229,8 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Employer Info 1.2";
+            this.Tag = "Employer Info";
+            this.Text = "Employer Info";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.splitP.Panel1.ResumeLayout(false);

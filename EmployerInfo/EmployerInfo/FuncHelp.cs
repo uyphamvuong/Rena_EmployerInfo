@@ -24,7 +24,7 @@ namespace EmployerInfo
                 try
                 {
                     s_ = webpage.DownloadString(source_url);
-                    if (delete_breakline) { s_ = s_.Replace("\n", "").Replace("\t", "").Replace("\"", "'").Replace("  ", " ").Replace("  ", " ").Replace("  ", " "); }
+                    if (delete_breakline) { s_ = s_.Replace("\r", "").Replace("\n", "").Replace("\t", "").Replace("\"", "'").Replace("  ", " ").Replace("  ", " ").Replace("  ", " "); }
                 }
                 catch (Exception ex)
                 {
@@ -129,6 +129,72 @@ namespace EmployerInfo
             }
 
         }
+
+        public static string CheckOSVersion()
+        {
+            // Get OperatingSystem information from the system namespace.
+            System.OperatingSystem osInfo = System.Environment.OSVersion;
+            string OSVersion = "";
+
+            // Determine the platform.
+            switch (osInfo.Platform)
+            {
+                // Platform is Windows 95, Windows 98, 
+                // Windows 98 Second Edition, or Windows Me.
+                case System.PlatformID.Win32Windows:
+
+                    switch (osInfo.Version.Minor)
+                    {
+                        case 0:
+                            OSVersion = "Windows 95";
+                            break;
+                        case 10:
+                            if (osInfo.Version.Revision.ToString() == "2222A")
+                                OSVersion = "Windows 98 Second Edition";
+                            else
+                                OSVersion = "Windows 98";
+                            break;
+                        case 90:
+                            OSVersion = "Windows Me";
+                            break;
+                    }
+                    break;
+
+                // Platform is Windows NT 3.51, Windows NT 4.0, Windows 2000,
+                // or Windows XP.
+                case System.PlatformID.Win32NT:
+
+                    switch (osInfo.Version.Major)
+                    {
+                        case 3:
+                            OSVersion = "Windows NT 3.51";
+                            break;
+                        case 4:
+                            OSVersion = "Windows NT 4.0";
+                            break;
+                        case 5:
+                            if (osInfo.Version.Minor == 0)
+                                OSVersion = "Windows 2000";
+                            else
+                                OSVersion = "Windows XP";
+                            break;
+                        case 6:
+                            if (osInfo.Version.Minor == 0)
+                                OSVersion = "Windows Vista";
+                            else if (osInfo.Version.Minor == 1)
+                                OSVersion = "Windows 7";
+                            else if (osInfo.Version.Minor == 2)
+                                OSVersion = "Windows 8";
+                            else if (osInfo.Version.Minor == 3)
+                                OSVersion = "Windows 8.1";
+                            break;
+                        case 10:
+                            OSVersion = "Windows 10";
+                            break;
+                    } break;
+            }
+            return OSVersion;
+        }        
     }
 }
         

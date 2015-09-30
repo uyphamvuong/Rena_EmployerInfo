@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DllWebBrowser;
+using DreamCMS.Config;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +23,7 @@ namespace EmployerInfo
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+            OSVersion = FuncHelp.CheckOSVersion();
         }
 
         private void frmMain_Shown(object sender, EventArgs e)
@@ -35,6 +37,8 @@ namespace EmployerInfo
             frm.Dock = DockStyle.Fill;
             frm.Show();
 
+            Application.DoEvents();
+            CheckUpdate();
         }
 
         #region # Effect #
@@ -79,6 +83,12 @@ namespace EmployerInfo
                     break;
                 case 6:
                     frm = new frmM6();
+                    break;
+                case 7:
+                    frm = new frm07();
+                    break;
+                case 8:
+                    MessageBox.Show("Chức năng này đang hoàn thiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
             }
 
@@ -136,6 +146,25 @@ namespace EmployerInfo
         public void SetPercentProcess(int index, int max)
         {
             processBarEdit1.ValuePercent = Convert.ToInt32((double)index / max * 100);
+            this.Text = string.Format("{0} - {1}%", this.Tag.ToString(), Convert.ToInt32((double)index / max * 100));
+            if (index == max) { this.Text = this.Tag.ToString(); }
+            if(OSVersion!="Windows XP")
+            {
+                TaskbarProgress.SetValue(this.Handle, index, max);
+                TaskbarProgress.SetState(this.Handle, TaskbarProgress.TaskbarStates.Normal);
+            }            
+        }
+
+        public void NoProcess()
+        {
+            if (OSVersion != "Windows XP")
+            {
+                TaskbarProgress.SetState(this.Handle, TaskbarProgress.TaskbarStates.NoProgress);
+            }            
+            TopMost = true;
+            TopMost = false;
+            Activate();
+            this.Text = this.Tag.ToString();
         }
 
         #endregion
@@ -168,11 +197,52 @@ namespace EmployerInfo
 
         private void btnSetting_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chức năng này đang hoàn thiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Form frmMini = new frmSetting();
+            frmMini.ShowDialog();
+
         }
 
-        
-        
+        static string OSVersion;
 
+        void CheckUpdate()
+        {
+            if (!File.Exists(Application.StartupPath + "\\" + @"\Update.exe")) { return; }           
+            
+            try
+            {
+                Xmlconfig xcf = new Xmlconfig("Config.ini", true);
+                string _Version = xcf.Settings["EmployerInfo/Version"].Value;
+                AutoCheckUpdate = xcf.Settings["EmployerInfo/AutoCheckUpdate"].boolValue;
+                AskOpenFileWhenDone = xcf.Settings["EmployerInfo/AskOpenFileWhenDone"].boolValue;
+
+                if (!AutoCheckUpdate) { return; }
+
+                string Link = "https://github.com/uyphamvuong/Rena_EmployerInfo/blob/master/README.md";
+                WebBrowser wbr = new WebBrowser();
+                DllWbr.Redirect(wbr, Link);
+                string s_ = wbr.DocumentText;
+                s_ = s_.Replace("\r", "").Replace("\n", "").Replace("\t", "").Replace("\"", "'").Replace("  ", " ").Replace("  ", " ").Replace("  ", " ");
+                string VersionNew = FuncHelp.CutFromTo(s_, ":::Rena_EmployerInfo Version:::", "</P>");
+                
+                xcf.Dispose();
+
+                if (_Version != VersionNew)
+                {
+                    if (MessageBox.Show("Đã có phiên bản " + VersionNew + ", bản có muốn cập nhật?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        Process.Start("Update.exe");
+                        Close();
+                    }
+                }
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        public static bool AutoCheckUpdate, AskOpenFileWhenDone = false;
+         
     }
 }

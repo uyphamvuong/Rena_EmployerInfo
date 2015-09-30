@@ -40,10 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DllWebBrowser">
-      <HintPath>..\..\DllWebBrowser\DllWebBrowser\bin\Release\DllWebBrowser.dll</HintPath>
+      <HintPath>bin\Release\Library\DllWebBrowser.dll</HintPath>
     </Reference>
     <Reference Include="DreamCMS.Config">
-      <HintPath>..\..\DreamCMS.Config\bin\Release\DreamCMS.Config.dll</HintPath>
+      <HintPath>bin\Release\Library\DreamCMS.Config.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=4.0.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.0.4\lib\net20\EPPlus.dll</HintPath>
@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormSub\trangvangvietnam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\trangvangvietnam.Designer.cs">
+      <DependentUpon>trangvangvietnam.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSub\vlam24hNTD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,12 @@
     </Compile>
     <Compile Include="FormSub\thongtincongty.Designer.cs">
       <DependentUpon>thongtincongty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSub\_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\_Setting.Designer.cs">
+      <DependentUpon>_Setting.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSub\_WebFormPopup.cs">
       <SubType>Form</SubType>
@@ -127,6 +139,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskbarProgress.cs" />
     <EmbeddedResource Include="FormSub\thuongmai.resx">
       <DependentUpon>thuongmai.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +152,9 @@
     <EmbeddedResource Include="FormSub\thongtincongty.resx">
       <DependentUpon>thongtincongty.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\trangvangvietnam.resx">
+      <DependentUpon>trangvangvietnam.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSub\vieclam24h.resx">
       <DependentUpon>vieclam24h.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSub\_Home.resx">
       <DependentUpon>_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\_Setting.resx">
+      <DependentUpon>_Setting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSub\_WebFormPopup.resx">
       <DependentUpon>_WebFormPopup.cs</DependentUpon>

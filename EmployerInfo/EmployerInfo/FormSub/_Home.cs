@@ -1,4 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using DllWebBrowser;
+using DreamCMS.Config;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace EmployerInfo
 {
@@ -8,5 +13,13 @@ namespace EmployerInfo
         {
             InitializeComponent();
         }
+
+        private void Home_Shown(object sender, System.EventArgs e)
+        {
+            //Application.DoEvents();
+            //CheckUpdate();
+        }
+
+        
     }
 }
