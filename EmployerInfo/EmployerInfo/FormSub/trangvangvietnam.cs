@@ -70,7 +70,11 @@ namespace EmployerInfo
             if (IsRun) { IsStop = true; return; }
             if (!CheckInput()) { return; }
 
-            if (!chxGetAllCategory.Checked) { dt_CategoryLink.Rows.Add(dt_Category.Rows[cbxCategory.SelectedIndex][0], dt_Category.Rows[cbxCategory.SelectedIndex][1]); }
+            if (!chxGetAllCategory.Checked)
+            {
+                for (int i = 0; i < chkListCategory.Items.Count;i++ )
+                    if (chkListCategory.GetItemChecked(i)) { dt_CategoryLink.Rows.Add(dt_Category.Rows[i][0], dt_Category.Rows[i][1]); }                   
+            }
             else
             {
                 for (int i = 0; i < dt_Category.Rows.Count; i++)
@@ -124,7 +128,7 @@ namespace EmployerInfo
             IsRun = false;
             stt5.Visible = false;
             (Application.OpenForms["frmMain"] as frmMain).NoProcess();            
-            string filename = @"Export\Export_TrangVangVietNam_"+ dt_Port.Rows[cbxPortList.SelectedIndex]["Name"]+".xlsx";
+            string filename = @"Export\Export_TrangVangVietNam_"+ dt_Port.Rows[cbxPortList.SelectedIndex]["Name"] + " " + txtFileName.Text+" " + DateTime.Now.ToString("dd_MM_yyyy hh_mm_ss")  +".xlsx";
             FuncHelp.ExportExcel(dt, filename, new Dictionary<int,int>{{1,70}});
 
             if (frmMain.AskOpenFileWhenDone)
@@ -139,6 +143,11 @@ namespace EmployerInfo
             if (chkListBox.CheckedItems.Count < 1)
             {
                 MessageBox.Show("Bạn phải chọn ít nhất 1 trường dữ liệu");
+                return false;
+            }
+            if (chkListCategory.CheckedItems.Count < 1 && !chxGetAllCategory.Checked)
+            {
+                MessageBox.Show("Bạn phải chọn ít nhất 1 danh mục để lấy dữ liệu");
                 return false;
             }
 
@@ -172,16 +181,18 @@ namespace EmployerInfo
                 string strCount = temp.Substring(temp.LastIndexOf("(")+1,temp.Length-temp.LastIndexOf("(")-1);
                 strCount = FuncHelp.CutTo(strCount, ")</span>");
                 strName = WebUtility.HtmlDecode(strName);
-                dt_Category.Rows.Add(strLink, strName, strName + " (" + strCount + ")", strCount.Replace(",", "").Replace(".", ""));
+                dt_Category.Rows.Add(strLink, strName, "[" + strCount + "] " +  strName, strCount.Replace(",", "").Replace(".", ""));
             }
 
             dt_Category.DefaultView.Sort = "Name ASC";
-            dt_Category = dt_Category.DefaultView.ToTable(true, "Link", "Name", "NameWithCount", "CountItem");    
+            dt_Category = dt_Category.DefaultView.ToTable(true, "Link", "Name", "NameWithCount", "CountItem");
 
-            cbxCategory.DataSource = dt_Category;
+            chkListCategory.Items.Clear();
+            for (int i = 0; i < dt_Category.Rows.Count; i++)
+                chkListCategory.Items.Add(dt_Category.Rows[i]["NameWithCount"]);
             stt1.Text = "Tổng danh mục đã nhận: " + dt_Category.Rows.Count.ToString();
             btnRun.Enabled = true;
-            cbxCategory.Enabled = true;
+            chkListCategory.Enabled = true;
         }
 
         void Get_LinkDetailFromPage(DataRow link)
@@ -319,7 +330,7 @@ namespace EmployerInfo
 
         private void chxGetAllCategory_CheckedChanged(object sender, EventArgs e)
         {
-            cbxCategory.Enabled = !chxGetAllCategory.Checked;
+            chkListCategory.Enabled = !chxGetAllCategory.Checked;
         }
 
     }

@@ -57,7 +57,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 18);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Phiên bản 1.2.2";
+            this.label2.Text = "Phiên bản 1.2.3";
             // 
             // label3
             // 
@@ -79,7 +79,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(239, 18);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Cập nhật mới nhất ngày 28/09/2015";
+            this.label4.Text = "Cập nhật mới nhất ngày 03/10/2015";
             // 
             // richTextBox1
             // 

@@ -37,12 +37,14 @@
             this.stt2 = new System.Windows.Forms.Label();
             this.stt3 = new System.Windows.Forms.Label();
             this.stt4 = new System.Windows.Forms.Label();
-            this.cbxCategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbxPortList = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.chxGetAllCategory = new System.Windows.Forms.CheckBox();
             this.stt5 = new System.Windows.Forms.Label();
+            this.chkListCategory = new System.Windows.Forms.CheckedListBox();
+            this.lFileName = new System.Windows.Forms.Label();
+            this.txtFileName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,9 +89,9 @@
             // btnRun
             // 
             this.btnRun.Image = global::EmployerInfo.Properties.Resources.info;
-            this.btnRun.Location = new System.Drawing.Point(463, 12);
+            this.btnRun.Location = new System.Drawing.Point(12, 301);
             this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(156, 48);
+            this.btnRun.Size = new System.Drawing.Size(163, 48);
             this.btnRun.TabIndex = 14;
             this.btnRun.Text = "GET INFO";
             this.btnRun.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -134,7 +136,7 @@
             // 
             this.stt1.AutoSize = true;
             this.stt1.ForeColor = System.Drawing.Color.Blue;
-            this.stt1.Location = new System.Drawing.Point(230, 186);
+            this.stt1.Location = new System.Drawing.Point(216, 251);
             this.stt1.Name = "stt1";
             this.stt1.Size = new System.Drawing.Size(143, 16);
             this.stt1.TabIndex = 18;
@@ -146,7 +148,7 @@
             // 
             this.stt2.AutoSize = true;
             this.stt2.ForeColor = System.Drawing.Color.Green;
-            this.stt2.Location = new System.Drawing.Point(230, 211);
+            this.stt2.Location = new System.Drawing.Point(216, 276);
             this.stt2.Name = "stt2";
             this.stt2.Size = new System.Drawing.Size(226, 16);
             this.stt2.TabIndex = 19;
@@ -158,7 +160,7 @@
             // 
             this.stt3.AutoSize = true;
             this.stt3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.stt3.Location = new System.Drawing.Point(230, 237);
+            this.stt3.Location = new System.Drawing.Point(216, 302);
             this.stt3.Name = "stt3";
             this.stt3.Size = new System.Drawing.Size(186, 16);
             this.stt3.TabIndex = 21;
@@ -170,7 +172,7 @@
             // 
             this.stt4.AutoSize = true;
             this.stt4.ForeColor = System.Drawing.Color.Red;
-            this.stt4.Location = new System.Drawing.Point(230, 263);
+            this.stt4.Location = new System.Drawing.Point(216, 328);
             this.stt4.Name = "stt4";
             this.stt4.Size = new System.Drawing.Size(252, 16);
             this.stt4.TabIndex = 22;
@@ -178,26 +180,11 @@
             this.stt4.Text = "Số trang đã duyệt: {0:##.#}/{1}... {2:##.#}%";
             this.stt4.Visible = false;
             // 
-            // cbxCategory
-            // 
-            this.cbxCategory.DisplayMember = "NameWithCount";
-            this.cbxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCategory.Enabled = false;
-            this.cbxCategory.ForeColor = System.Drawing.Color.Black;
-            this.cbxCategory.IntegralHeight = false;
-            this.cbxCategory.ItemHeight = 16;
-            this.cbxCategory.Location = new System.Drawing.Point(233, 138);
-            this.cbxCategory.MaxDropDownItems = 15;
-            this.cbxCategory.Name = "cbxCategory";
-            this.cbxCategory.Size = new System.Drawing.Size(386, 24);
-            this.cbxCategory.TabIndex = 23;
-            this.cbxCategory.ValueMember = "Link";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(230, 119);
+            this.label1.Location = new System.Drawing.Point(216, 96);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 16);
             this.label1.TabIndex = 24;
@@ -210,10 +197,10 @@
             this.cbxPortList.ForeColor = System.Drawing.Color.Black;
             this.cbxPortList.IntegralHeight = false;
             this.cbxPortList.ItemHeight = 16;
-            this.cbxPortList.Location = new System.Drawing.Point(233, 76);
+            this.cbxPortList.Location = new System.Drawing.Point(343, 53);
             this.cbxPortList.MaxDropDownItems = 15;
             this.cbxPortList.Name = "cbxPortList";
-            this.cbxPortList.Size = new System.Drawing.Size(386, 24);
+            this.cbxPortList.Size = new System.Drawing.Size(287, 24);
             this.cbxPortList.TabIndex = 26;
             this.cbxPortList.ValueMember = "Link";
             this.cbxPortList.SelectedIndexChanged += new System.EventHandler(this.cbxPortList_SelectedIndexChanged);
@@ -222,7 +209,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(230, 57);
+            this.label4.Location = new System.Drawing.Point(216, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 16);
             this.label4.TabIndex = 26;
@@ -231,7 +218,7 @@
             // chxGetAllCategory
             // 
             this.chxGetAllCategory.AutoSize = true;
-            this.chxGetAllCategory.Location = new System.Drawing.Point(449, 118);
+            this.chxGetAllCategory.Location = new System.Drawing.Point(456, 90);
             this.chxGetAllCategory.Name = "chxGetAllCategory";
             this.chxGetAllCategory.Size = new System.Drawing.Size(170, 20);
             this.chxGetAllCategory.TabIndex = 27;
@@ -243,7 +230,7 @@
             // 
             this.stt5.AutoSize = true;
             this.stt5.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.stt5.Location = new System.Drawing.Point(230, 289);
+            this.stt5.Location = new System.Drawing.Point(216, 354);
             this.stt5.Name = "stt5";
             this.stt5.Size = new System.Drawing.Size(66, 16);
             this.stt5.TabIndex = 28;
@@ -251,17 +238,45 @@
             this.stt5.Text = "Loading...";
             this.stt5.Visible = false;
             // 
+            // chkListCategory
+            // 
+            this.chkListCategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkListCategory.Enabled = false;
+            this.chkListCategory.FormattingEnabled = true;
+            this.chkListCategory.Location = new System.Drawing.Point(219, 116);
+            this.chkListCategory.Name = "chkListCategory";
+            this.chkListCategory.Size = new System.Drawing.Size(418, 119);
+            this.chkListCategory.TabIndex = 29;
+            // 
+            // lFileName
+            // 
+            this.lFileName.AutoSize = true;
+            this.lFileName.Location = new System.Drawing.Point(216, 13);
+            this.lFileName.Name = "lFileName";
+            this.lFileName.Size = new System.Drawing.Size(84, 16);
+            this.lFileName.TabIndex = 30;
+            this.lFileName.Text = "Tên mở rộng";
+            // 
+            // txtFileName
+            // 
+            this.txtFileName.Location = new System.Drawing.Point(302, 10);
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.Size = new System.Drawing.Size(328, 22);
+            this.txtFileName.TabIndex = 31;
+            // 
             // frm07
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 324);
+            this.ClientSize = new System.Drawing.Size(649, 416);
+            this.Controls.Add(this.txtFileName);
+            this.Controls.Add(this.lFileName);
+            this.Controls.Add(this.chkListCategory);
             this.Controls.Add(this.stt5);
             this.Controls.Add(this.chxGetAllCategory);
             this.Controls.Add(this.cbxPortList);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbxCategory);
             this.Controls.Add(this.stt4);
             this.Controls.Add(this.stt3);
             this.Controls.Add(this.stt2);
@@ -294,12 +309,14 @@
         private System.Windows.Forms.Label stt2;
         private System.Windows.Forms.Label stt3;
         private System.Windows.Forms.Label stt4;
-        private System.Windows.Forms.ComboBox cbxCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbxPortList;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox chxGetAllCategory;
         private System.Windows.Forms.Label stt5;
+        private System.Windows.Forms.CheckedListBox chkListCategory;
+        private System.Windows.Forms.Label lFileName;
+        private System.Windows.Forms.TextBox txtFileName;
 
     }
 }

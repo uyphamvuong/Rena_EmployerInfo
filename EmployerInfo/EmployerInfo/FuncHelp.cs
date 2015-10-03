@@ -16,6 +16,7 @@ namespace EmployerInfo
     {
         public static string GetSource(string source_url, bool delete_breakline = true)
         {
+            if (source_url.IndexOf("http") < 0) { return ""; }
             string s_ = "";
             using (var webpage = new WebClient())
             {
@@ -40,27 +41,34 @@ namespace EmployerInfo
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(source_url);
             request.CookieContainer = cookie;
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-            if (response.StatusCode == HttpStatusCode.OK)
+            try
             {
-                Stream receiveStream = response.GetResponseStream();
-                StreamReader readStream = null;
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-                if (response.CharacterSet == null)
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    readStream = new StreamReader(receiveStream);
-                }
-                else
-                {
-                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
-                }
-                data = readStream.ReadToEnd();
-                data = data.Replace("\r\n", "").Replace("\n", "").Replace("\t", "").Replace("\"", "'").Replace("  ", " ").Replace("  ", " ").Replace("  ", " ").Replace("> <", "><");
+                    Stream receiveStream = response.GetResponseStream();
+                    StreamReader readStream = null;
 
-                response.Close();
-                readStream.Close();
+                    if (response.CharacterSet == null)
+                    {
+                        readStream = new StreamReader(receiveStream);
+                    }
+                    else
+                    {
+                        readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                    }
+                    data = readStream.ReadToEnd();
+                    data = data.Replace("\r\n", "").Replace("\n", "").Replace("\t", "").Replace("\"", "'").Replace("  ", " ").Replace("  ", " ").Replace("  ", " ").Replace("> <", "><");
+
+                    response.Close();
+                    readStream.Close();
+                }
             }
+            catch(Exception ex){
+                MessageBox.Show("Quá trình lấy dữ liệu gặp lỗi!!!\n\n" + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }            
             return data;
         }
 

@@ -118,7 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>#Version 1.2.2
+    <value>#Version 1.2.3
+- Cập nhật lại trang "vieclam24h.com.vn"
+- Cập nhật chọn nhiều danh mục
+
+#Version 1.2.2
 - Cập nhật trang "trangvangvietnam.com"
 - Thêm changelog (frmHome)
 - Thêm processbar ở taskbar
