@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace EmployerInfo
 {
-    public partial class frmM5 : Form
+    public partial class frmThuongMaiVN : Form
     {
 
         #region # INIT #
 
-        public frmM5()
+        public frmThuongMaiVN()
         {
             InitializeComponent();           
         }

@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace EmployerInfo
 {
-    public partial class frmM2 : Form
+    public partial class frmThongTinCongTy : Form
     {
 
         #region # INIT #
 
-        public frmM2()
+        public frmThongTinCongTy()
         {
             InitializeComponent();           
         }

@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace EmployerInfo
 {
-    public partial class frmM1 : Form
+    public partial class frmVieclamtvTimViec : Form
     {
 
         #region # INIT #
 
-        public frmM1()
+        public frmVieclamtvTimViec()
         {
             InitializeComponent();           
         }
@@ -35,16 +35,6 @@ namespace EmployerInfo
 
             dt_DetailLinkFromPage.Columns.Add("Link");
             dt_DetailLinkFromPage.Columns.Add("Name");
-
-            dt_Port.Columns.Add("Link");
-            dt_Port.Columns.Add("Name");
-            dt_Port.Rows.Add(host + "/viec-lam-quan-ly", "Việc làm quản lý");
-            dt_Port.Rows.Add(host + "/viec-lam-chuyen-mon", "Việc làm theo chuyên môn");
-            dt_Port.Rows.Add(host + "/viec-lam-lao-dong-pho-thong", "Lao động phổ thông/Nghề");
-            dt_Port.Rows.Add(host + "/viec-lam-sinh-vien-ban-thoi-gian", "Sinh viên - Bán thời gian");
-            cbxPortList.DataSource = dt_Port;
-            cbxPortList.ValueMember = "Link";
-            cbxPortList.DisplayMember = "Name";
             
         }
 
@@ -74,7 +64,6 @@ namespace EmployerInfo
         DataTable dt_CategoryLink = new DataTable();
         DataTable dt_DetailLinkFromPage = new DataTable();
         DataTable dt_Category = new DataTable();
-        DataTable dt_Port = new DataTable();
         DataTable dt = new DataTable();
         CookieContainer cookieContainer = new CookieContainer();
 
@@ -135,7 +124,7 @@ namespace EmployerInfo
             // FINISH
             btnRun.Text = "GET INFO";
             IsRun = false;
-            string filename = @"Export\Export_vieclam24h " + dt_Port.Rows[cbxPortList.SelectedIndex]["Name"].ToString() + " " + txtFileName.Text + " " + DateTime.Now.ToString("dd_MM_yyyy hh_mm_ss") + ".xlsx";
+            string filename = @"Export\Export_vieclam24h " + txtFileName.Text + " " + DateTime.Now.ToString("dd_MM_yyyy hh_mm_ss") + ".xlsx";
             FuncHelp.ExportExcel(dt, filename);
 
             if (MessageBox.Show("Lưu dữ liệu thành công \n\nBạn có muốn mở file đã lưu?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -162,43 +151,11 @@ namespace EmployerInfo
             foreach (Object i in chkListBox.CheckedItems) { dt.Columns.Add(i.ToString()); }            
 
             return true;
-        }        
+        }
 
-        void Get_ArrayLinkCategory()
+        void Get_Category()
         {
-            dt_Category.Rows.Clear();
-            stt1.Visible = true;
-            stt1.Text = "Đang lấy các danh mục...";
-            btnRun.Enabled = false;
-            Application.DoEvents();
 
-            string s = FuncHelp.GetSourceWithCookie(cbxPortList.SelectedValue as string,ref cookieContainer);
-            s = FuncHelp.CutFromTo(s, "id='gate_nganhnghe_abc'", "id='gate_tinhthanh_sl'");
-
-            while (s.IndexOf("nganhnghe_item") > 0)
-            {
-                s = FuncHelp.CutFrom(s, "nganhnghe_item");
-                string temp = FuncHelp.CutFromTo(s, "<a href", "</a>");
-                string strLink = FuncHelp.CutFromTo(temp, "='", "' class");
-                temp = FuncHelp.CutFrom(temp, ">");
-                string strName = FuncHelp.CutTo(temp, "<span").Trim();
-                string strCount = FuncHelp.CutFromTo(temp, ">(", ")</span>");
-                strName = WebUtility.HtmlDecode(strName);
-                //vieclam.24h.com.vn/tim-kiem-viec-lam-nhanh/?hdn_nganh_nghe_cap1=??
-                string strIdCategory = strLink.Substring(strLink.LastIndexOf("-c") + 2, strLink.Length - strLink.LastIndexOf("-c") - ".html".Length - 2);
-                strLink = "/tim-kiem-viec-lam-nhanh/?hdn_nganh_nghe_cap1=" + strIdCategory;
-                dt_Category.Rows.Add(strLink, strName, "[" + strCount + "] " + strName, strIdCategory, strCount.Replace(",", "").Replace(".", ""));
-            }
-
-            dt_Category.DefaultView.Sort = "Name ASC";
-            dt_Category = dt_Category.DefaultView.ToTable();
-
-            chkListCategory.Items.Clear();
-            for (int i = 0; i < dt_Category.Rows.Count; i++)
-                chkListCategory.Items.Add(dt_Category.Rows[i]["NameWithCount"]);
-            stt1.Text = "Tổng danh mục đã nhận: " + dt_Category.Rows.Count.ToString();
-            btnRun.Enabled = true;
-            chkListCategory.Enabled = true;
         }
 
         void Get_LinkDetailFromPage(DataRow link)
@@ -346,11 +303,6 @@ namespace EmployerInfo
         {
             Application.DoEvents();
             
-        }
-
-        private void cbxPortList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Get_ArrayLinkCategory();
         }
 
         private void chxGetAllCategory_CheckedChanged(object sender, EventArgs e)

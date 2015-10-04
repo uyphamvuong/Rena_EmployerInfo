@@ -1,6 +1,6 @@
 ﻿namespace EmployerInfo
 {
-    partial class frmM4
+    partial class frmDanhbadoanhnghiep
     {
         /// <summary>
         /// Required designer variable.
@@ -187,7 +187,7 @@
             this.stt2.Text = "Số link sẽ lấy dữ liệu: {0:##.##}";
             this.stt2.Visible = false;
             // 
-            // frmM4
+            // frmDanhbadoanhnghiep
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -205,7 +205,7 @@
             this.Controls.Add(this.chkListBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmM4";
+            this.Name = "frmDanhbadoanhnghiep";
             this.Text = "frmM4";
             this.Load += new System.EventHandler(this.frmM1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).EndInit();

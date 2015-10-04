@@ -17,7 +17,7 @@ namespace EmployerInfo
     {
         public frmMain()
         {
-            if (!CheckIsSingleInstance()) { Close(); }
+            //if (!CheckIsSingleInstance()) { Close(); }
             InitializeComponent();
         }        
 
@@ -58,47 +58,60 @@ namespace EmployerInfo
         {
             if (listLeft.SelectedItems.Count < 1) { return; }
 
+            for (int i = 0; i < listLeft.Items.Count; i++)
+                listLeft.Items[i].Font = new Font("Microsoft Sans Serif", 11, FontStyle.Regular);
+            listLeft.SelectedItems[0].Font = new Font("Microsoft Sans Serif", 11, FontStyle.Bold); 
+            listLeft.SelectedItems[0].Focused = false;
+
             splitP.Panel2.Controls.Clear();
             Form frm = new Form();
             
-            switch(listLeft.SelectedItems[0].Index)
+            switch(listLeft.SelectedItems[0].Text)
             {
-                case 0:
+                case "Trang chủ":
                     frm = new Home();        
                     break;
-                case 1:
-                    frm = new frmM1();                    
+                case "vieclam24h (Tìm việc)":
+                    frm = new frmVieclam24TimViec();                    
                     break;
-                case 2:
-                    frm = new frmM2();
+                case "vieclam24h (NTD)":
+                    frm = new frmVieclam24hNTD();
                     break;
-                case 3:
-                    frm = new frmM3();
+                case "thongtincongty.com":
+                    frm = new frmThongTinCongTy();
                     break;
-                case 4:
-                    frm = new frmM4();
+                case "ctyvietnam.com":
+                    frm = new frmCtyvietnam();
                     break;
-                case 5:
-                    frm = new frmM5();
+                case "danhbadoanhnghiep.vn":
+                    frm = new frmDanhbadoanhnghiep();
                     break;
-                case 6:
-                    frm = new frmM6();
+                case "thuongmai.vn":
+                    frm = new frmThuongMaiVN();
                     break;
-                case 7:
-                    frm = new frm07();
+                case "trangvangvietnam.com":
+                    frm = new frmTrangVangVN();
                     break;
-                case 8:
-                    MessageBox.Show("Chức năng này đang hoàn thiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                case "vieclam.tv (Tìm việc làm)":                    
+                    frm = new frmVieclamtvTimViec();
+                    break;
+                case "vieclam.tv (Ứng viên)":
+                    frm = new frmVieclamtvTimViec();
+                    break;
+                case "vieclam.tv (NTD)":
+                    frm = new frmVieclamtvTimViec();
                     break;
             }
 
             if (string.IsNullOrEmpty(frm.Name)) { return; }
+            listLeft.SelectedItems[0].Selected = false;
+            Application.DoEvents();
 
             frm.TopLevel = false;
             splitP.Panel2.Controls.Add(frm);
             frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;
-            frm.Show();
+            frm.Show();            
 
         }
 

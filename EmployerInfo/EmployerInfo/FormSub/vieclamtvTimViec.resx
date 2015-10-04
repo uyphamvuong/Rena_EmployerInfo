@@ -117,22 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>#Version 1.2.3
-- Cập nhật lại trang "vieclam24h.com.vn"
-- Cập nhật chọn nhiều danh mục
-- Cập nhật cho phép mở nhiều chương trình cùng lúc
-
-#Version 1.2.2
-- Cập nhật trang "trangvangvietnam.com"
-- Thêm changelog (frmHome)
-- Thêm processbar ở taskbar
-
-#Version 1.2
- - Cập nhật trang vieclam24h (4 cổng)
- - Thêm chức năng update tự động
-
-#Version 1.1
- - Cập nhật lại trang vieclam24h NTD</value>
-  </data>
 </root>

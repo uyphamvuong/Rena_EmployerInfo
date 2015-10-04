@@ -1,6 +1,6 @@
 ﻿namespace EmployerInfo
 {
-    partial class frmM1
+    partial class frmVieclam24TimViec
     {
         /// <summary>
         /// Required designer variable.
@@ -316,7 +316,7 @@
             this.lFileName.TabIndex = 32;
             this.lFileName.Text = "Tên mở rộng";
             // 
-            // frmM1
+            // frmVieclam24TimViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -344,7 +344,7 @@
             this.Controls.Add(this.dtpMin);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmM1";
+            this.Name = "frmVieclam24TimViec";
             this.Text = "frmM1";
             this.Load += new System.EventHandler(this.frmM1_Load);
             this.Shown += new System.EventHandler(this.frmM1_Shown);

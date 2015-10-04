@@ -1,6 +1,6 @@
 ﻿namespace EmployerInfo
 {
-    partial class frmTrangVangVN
+    partial class frmVieclamtvTimViec
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dtpMin = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpMax = new System.Windows.Forms.DateTimePicker();
+            this.cbxTimeLimit = new System.Windows.Forms.CheckBox();
             this.chkListBox = new System.Windows.Forms.CheckedListBox();
             this.chxSelectAll = new System.Windows.Forms.CheckBox();
             this.btnRun = new System.Windows.Forms.Button();
@@ -38,47 +43,104 @@
             this.stt3 = new System.Windows.Forms.Label();
             this.stt4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbxPortList = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.chxGetAllCategory = new System.Windows.Forms.CheckBox();
-            this.stt5 = new System.Windows.Forms.Label();
             this.chkListCategory = new System.Windows.Forms.CheckedListBox();
-            this.lFileName = new System.Windows.Forms.Label();
             this.txtFileName = new System.Windows.Forms.TextBox();
+            this.lFileName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).BeginInit();
             this.SuspendLayout();
             // 
+            // dtpMin
+            // 
+            this.dtpMin.CustomFormat = "dd/MM";
+            this.dtpMin.Enabled = false;
+            this.dtpMin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMin.Location = new System.Drawing.Point(119, 38);
+            this.dtpMin.Name = "dtpMin";
+            this.dtpMin.Size = new System.Drawing.Size(53, 22);
+            this.dtpMin.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Enabled = false;
+            this.label2.Location = new System.Drawing.Point(37, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 16);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Từ ngày";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Enabled = false;
+            this.label3.Location = new System.Drawing.Point(37, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 16);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Đến ngày";
+            // 
+            // dtpMax
+            // 
+            this.dtpMax.CustomFormat = "dd/MM";
+            this.dtpMax.Enabled = false;
+            this.dtpMax.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMax.Location = new System.Drawing.Point(119, 66);
+            this.dtpMax.Name = "dtpMax";
+            this.dtpMax.Size = new System.Drawing.Size(53, 22);
+            this.dtpMax.TabIndex = 8;
+            // 
+            // cbxTimeLimit
+            // 
+            this.cbxTimeLimit.AutoSize = true;
+            this.cbxTimeLimit.Location = new System.Drawing.Point(16, 12);
+            this.cbxTimeLimit.Name = "cbxTimeLimit";
+            this.cbxTimeLimit.Size = new System.Drawing.Size(163, 20);
+            this.cbxTimeLimit.TabIndex = 10;
+            this.cbxTimeLimit.Text = "Giới hạn hạn nộp hồ sơ";
+            this.cbxTimeLimit.UseVisualStyleBackColor = true;
+            this.cbxTimeLimit.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // chkListBox
             // 
-            this.chkListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkListBox.FormattingEnabled = true;
             this.chkListBox.Items.AddRange(new object[] {
+            "Tên công việc",
+            "Hạn nộp hồ sơ",
+            "Lượt xem",
+            "Mã NTD",
+            "Ngày làm mới",
+            "Mức lương",
+            "Kinh nghiệm",
+            "Yêu cầu bằng cấp",
+            "Số lượng cần tuyển",
+            "Ngành nghề",
+            "Địa điểm làm việc",
+            "Chức vụ",
+            "Hình thức làm việc",
+            "Yêu cầu giới tính",
+            "Yêu cầu độ tuổi",
+            "Mô tả công việc",
+            "Quyền lợi được hưởng",
+            "Yêu cầu khác",
+            "Hồ sơ bao gồm",
+            "Người liên hệ",
+            "Địa chỉ liên hệ",
+            "Email liên hệ",
+            "Điện thoại liên hệ",
             "Tên công ty",
             "Địa chỉ",
-            "Điện thoại",
-            "Fax",
-            "Email",
-            "Website",
-            "Loại hình",
-            "Thị trường",
-            "Văn phòng giao dịch",
-            "Giới thiệu",
-            "Ngành nghề kinh doanh",
-            "Sản phẩm dịch vụ",
-            "Mã số thuế",
-            "Số nhân viên",
-            "Năm thành lập",
-            "Cửa hàng",
-            "Danh mục"});
-            this.chkListBox.Location = new System.Drawing.Point(15, 82);
+            "Quy mô",
+            "Danh mục nghề"});
+            this.chkListBox.Location = new System.Drawing.Point(13, 154);
             this.chkListBox.Name = "chkListBox";
-            this.chkListBox.Size = new System.Drawing.Size(191, 204);
+            this.chkListBox.Size = new System.Drawing.Size(193, 259);
             this.chkListBox.TabIndex = 11;
             // 
             // chxSelectAll
             // 
             this.chxSelectAll.AutoSize = true;
-            this.chxSelectAll.Location = new System.Drawing.Point(16, 56);
+            this.chxSelectAll.Location = new System.Drawing.Point(16, 132);
             this.chxSelectAll.Name = "chxSelectAll";
             this.chxSelectAll.Size = new System.Drawing.Size(190, 20);
             this.chxSelectAll.TabIndex = 13;
@@ -89,9 +151,9 @@
             // btnRun
             // 
             this.btnRun.Image = global::EmployerInfo.Properties.Resources.info;
-            this.btnRun.Location = new System.Drawing.Point(12, 301);
+            this.btnRun.Location = new System.Drawing.Point(481, 11);
             this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(163, 48);
+            this.btnRun.Size = new System.Drawing.Size(156, 48);
             this.btnRun.TabIndex = 14;
             this.btnRun.Text = "GET INFO";
             this.btnRun.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -101,7 +163,7 @@
             // numMaxSlg
             // 
             this.numMaxSlg.Enabled = false;
-            this.numMaxSlg.Location = new System.Drawing.Point(103, 11);
+            this.numMaxSlg.Location = new System.Drawing.Point(103, 104);
             this.numMaxSlg.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -124,7 +186,7 @@
             // cbxSlg
             // 
             this.cbxSlg.AutoSize = true;
-            this.cbxSlg.Location = new System.Drawing.Point(16, 12);
+            this.cbxSlg.Location = new System.Drawing.Point(16, 105);
             this.cbxSlg.Name = "cbxSlg";
             this.cbxSlg.Size = new System.Drawing.Size(80, 20);
             this.cbxSlg.TabIndex = 17;
@@ -136,7 +198,7 @@
             // 
             this.stt1.AutoSize = true;
             this.stt1.ForeColor = System.Drawing.Color.Blue;
-            this.stt1.Location = new System.Drawing.Point(216, 251);
+            this.stt1.Location = new System.Drawing.Point(228, 287);
             this.stt1.Name = "stt1";
             this.stt1.Size = new System.Drawing.Size(143, 16);
             this.stt1.TabIndex = 18;
@@ -148,7 +210,7 @@
             // 
             this.stt2.AutoSize = true;
             this.stt2.ForeColor = System.Drawing.Color.Green;
-            this.stt2.Location = new System.Drawing.Point(216, 276);
+            this.stt2.Location = new System.Drawing.Point(228, 312);
             this.stt2.Name = "stt2";
             this.stt2.Size = new System.Drawing.Size(226, 16);
             this.stt2.TabIndex = 19;
@@ -160,7 +222,7 @@
             // 
             this.stt3.AutoSize = true;
             this.stt3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.stt3.Location = new System.Drawing.Point(216, 302);
+            this.stt3.Location = new System.Drawing.Point(228, 338);
             this.stt3.Name = "stt3";
             this.stt3.Size = new System.Drawing.Size(186, 16);
             this.stt3.TabIndex = 21;
@@ -172,7 +234,7 @@
             // 
             this.stt4.AutoSize = true;
             this.stt4.ForeColor = System.Drawing.Color.Red;
-            this.stt4.Location = new System.Drawing.Point(216, 328);
+            this.stt4.Location = new System.Drawing.Point(228, 364);
             this.stt4.Name = "stt4";
             this.stt4.Size = new System.Drawing.Size(252, 16);
             this.stt4.TabIndex = 22;
@@ -184,41 +246,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(216, 96);
+            this.label1.Location = new System.Drawing.Point(228, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 16);
             this.label1.TabIndex = 24;
             this.label1.Text = "Danh mục";
             // 
-            // cbxPortList
-            // 
-            this.cbxPortList.DisplayMember = "Name";
-            this.cbxPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxPortList.ForeColor = System.Drawing.Color.Black;
-            this.cbxPortList.IntegralHeight = false;
-            this.cbxPortList.ItemHeight = 16;
-            this.cbxPortList.Location = new System.Drawing.Point(343, 53);
-            this.cbxPortList.MaxDropDownItems = 15;
-            this.cbxPortList.Name = "cbxPortList";
-            this.cbxPortList.Size = new System.Drawing.Size(287, 24);
-            this.cbxPortList.TabIndex = 26;
-            this.cbxPortList.ValueMember = "Link";
-            this.cbxPortList.SelectedIndexChanged += new System.EventHandler(this.cbxPortList_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(216, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 16);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Niên giáp ngành";
-            // 
             // chxGetAllCategory
             // 
             this.chxGetAllCategory.AutoSize = true;
-            this.chxGetAllCategory.Location = new System.Drawing.Point(456, 90);
+            this.chxGetAllCategory.Location = new System.Drawing.Point(467, 68);
             this.chxGetAllCategory.Name = "chxGetAllCategory";
             this.chxGetAllCategory.Size = new System.Drawing.Size(170, 20);
             this.chxGetAllCategory.TabIndex = 27;
@@ -226,56 +263,41 @@
             this.chxGetAllCategory.UseVisualStyleBackColor = true;
             this.chxGetAllCategory.CheckedChanged += new System.EventHandler(this.chxGetAllCategory_CheckedChanged);
             // 
-            // stt5
-            // 
-            this.stt5.AutoSize = true;
-            this.stt5.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.stt5.Location = new System.Drawing.Point(216, 354);
-            this.stt5.Name = "stt5";
-            this.stt5.Size = new System.Drawing.Size(66, 16);
-            this.stt5.TabIndex = 28;
-            this.stt5.Tag = "";
-            this.stt5.Text = "Loading...";
-            this.stt5.Visible = false;
-            // 
             // chkListCategory
             // 
             this.chkListCategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkListCategory.Enabled = false;
             this.chkListCategory.FormattingEnabled = true;
-            this.chkListCategory.Location = new System.Drawing.Point(219, 116);
+            this.chkListCategory.Location = new System.Drawing.Point(231, 94);
             this.chkListCategory.Name = "chkListCategory";
-            this.chkListCategory.Size = new System.Drawing.Size(418, 119);
-            this.chkListCategory.TabIndex = 29;
+            this.chkListCategory.Size = new System.Drawing.Size(406, 170);
+            this.chkListCategory.TabIndex = 30;
+            // 
+            // txtFileName
+            // 
+            this.txtFileName.Location = new System.Drawing.Point(231, 25);
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.Size = new System.Drawing.Size(236, 22);
+            this.txtFileName.TabIndex = 33;
             // 
             // lFileName
             // 
             this.lFileName.AutoSize = true;
-            this.lFileName.Location = new System.Drawing.Point(216, 13);
+            this.lFileName.Location = new System.Drawing.Point(228, 6);
             this.lFileName.Name = "lFileName";
             this.lFileName.Size = new System.Drawing.Size(84, 16);
-            this.lFileName.TabIndex = 30;
+            this.lFileName.TabIndex = 32;
             this.lFileName.Text = "Tên mở rộng";
             // 
-            // txtFileName
-            // 
-            this.txtFileName.Location = new System.Drawing.Point(302, 10);
-            this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(328, 22);
-            this.txtFileName.TabIndex = 31;
-            // 
-            // frmTrangVangVN
+            // frmVieclamtvTimViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 416);
+            this.ClientSize = new System.Drawing.Size(649, 436);
             this.Controls.Add(this.txtFileName);
             this.Controls.Add(this.lFileName);
             this.Controls.Add(this.chkListCategory);
-            this.Controls.Add(this.stt5);
             this.Controls.Add(this.chxGetAllCategory);
-            this.Controls.Add(this.cbxPortList);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.stt4);
             this.Controls.Add(this.stt3);
@@ -286,10 +308,15 @@
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.chxSelectAll);
             this.Controls.Add(this.chkListBox);
+            this.Controls.Add(this.cbxTimeLimit);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dtpMax);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtpMin);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmTrangVangVN";
-            this.Text = "frm07";
+            this.Name = "frmVieclamtvTimViec";
+            this.Text = "frm08";
             this.Load += new System.EventHandler(this.frmM1_Load);
             this.Shown += new System.EventHandler(this.frmM1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).EndInit();
@@ -300,6 +327,11 @@
 
         #endregion
 
+        private System.Windows.Forms.DateTimePicker dtpMin;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtpMax;
+        private System.Windows.Forms.CheckBox cbxTimeLimit;
         private System.Windows.Forms.CheckedListBox chkListBox;
         private System.Windows.Forms.CheckBox chxSelectAll;
         private System.Windows.Forms.Button btnRun;
@@ -310,13 +342,10 @@
         private System.Windows.Forms.Label stt3;
         private System.Windows.Forms.Label stt4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbxPortList;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox chxGetAllCategory;
-        private System.Windows.Forms.Label stt5;
         private System.Windows.Forms.CheckedListBox chkListCategory;
-        private System.Windows.Forms.Label lFileName;
         private System.Windows.Forms.TextBox txtFileName;
+        private System.Windows.Forms.Label lFileName;
 
     }
 }

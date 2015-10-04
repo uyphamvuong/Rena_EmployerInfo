@@ -70,11 +70,17 @@
     <Compile Include="FormSub\trangvangvietnam.Designer.cs">
       <DependentUpon>trangvangvietnam.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSub\vlam24hNTD.cs">
+    <Compile Include="FormSub\vieclamtvTimViec.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSub\vlam24hNTD.Designer.cs">
-      <DependentUpon>vlam24hNTD.cs</DependentUpon>
+    <Compile Include="FormSub\vieclamtvTimViec.Designer.cs">
+      <DependentUpon>vieclamtvTimViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSub\vieclam24hNTD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\vieclam24hNTD.Designer.cs">
+      <DependentUpon>vieclam24hNTD.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSub\thuongmai.cs">
       <SubType>Form</SubType>
@@ -113,11 +119,11 @@
       <DependentUpon>_WebFormPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="FuncHelp.cs" />
-    <Compile Include="FormSub\vieclam24h.cs">
+    <Compile Include="FormSub\vieclam24hTimViec.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSub\vieclam24h.Designer.cs">
-      <DependentUpon>vieclam24h.cs</DependentUpon>
+    <Compile Include="FormSub\vieclam24hTimViec.Designer.cs">
+      <DependentUpon>vieclam24hTimViec.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -155,11 +161,14 @@
     <EmbeddedResource Include="FormSub\trangvangvietnam.resx">
       <DependentUpon>trangvangvietnam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSub\vieclam24h.resx">
-      <DependentUpon>vieclam24h.cs</DependentUpon>
+    <EmbeddedResource Include="FormSub\vieclamtvTimViec.resx">
+      <DependentUpon>vieclamtvTimViec.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSub\vlam24hNTD.resx">
-      <DependentUpon>vlam24hNTD.cs</DependentUpon>
+    <EmbeddedResource Include="FormSub\vieclam24hTimViec.resx">
+      <DependentUpon>vieclam24hTimViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\vieclam24hNTD.resx">
+      <DependentUpon>vieclam24hNTD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSub\_Home.resx">
       <DependentUpon>_Home.cs</DependentUpon>

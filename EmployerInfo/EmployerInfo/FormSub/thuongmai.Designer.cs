@@ -1,6 +1,6 @@
 ﻿namespace EmployerInfo
 {
-    partial class frmM5
+    partial class frmThuongMaiVN
     {
         /// <summary>
         /// Required designer variable.
@@ -251,7 +251,7 @@
             this.panel1.Size = new System.Drawing.Size(411, 166);
             this.panel1.TabIndex = 29;
             // 
-            // frmM5
+            // frmThuongMaiVN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -269,7 +269,7 @@
             this.Controls.Add(this.chkListBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmM5";
+            this.Name = "frmThuongMaiVN";
             this.Text = "frmM5";
             this.Load += new System.EventHandler(this.frmM1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).EndInit();

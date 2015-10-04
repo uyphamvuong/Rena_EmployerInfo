@@ -1,6 +1,6 @@
 ﻿namespace EmployerInfo
 {
-    partial class frmM3
+    partial class frmCtyvietnam
     {
         /// <summary>
         /// Required designer variable.
@@ -213,7 +213,7 @@
             this.cbxMax.Size = new System.Drawing.Size(70, 24);
             this.cbxMax.TabIndex = 24;
             // 
-            // frmM3
+            // frmCtyvietnam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -234,7 +234,7 @@
             this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmM3";
+            this.Name = "frmCtyvietnam";
             this.Text = "frmM3";
             this.Load += new System.EventHandler(this.frmM1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).EndInit();

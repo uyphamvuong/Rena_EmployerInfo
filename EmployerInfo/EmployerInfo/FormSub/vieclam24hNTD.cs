@@ -14,9 +14,9 @@ using DllWebBrowser;
 
 namespace EmployerInfo
 {
-    public partial class frmM6 : Form
+    public partial class frmVieclam24hNTD : Form
     {
-        public frmM6()
+        public frmVieclam24hNTD()
         {
             InitializeComponent();
         }
