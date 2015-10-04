@@ -1,6 +1,6 @@
 ﻿namespace EmployerInfo
 {
-    partial class frmVieclamtvTimViec
+    partial class frmVieclamtvUngVien
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtpMin = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpMax = new System.Windows.Forms.DateTimePicker();
-            this.cbxTimeLimit = new System.Windows.Forms.CheckBox();
             this.chkListBox = new System.Windows.Forms.CheckedListBox();
             this.chxSelectAll = new System.Windows.Forms.CheckBox();
             this.btnRun = new System.Windows.Forms.Button();
@@ -50,97 +45,45 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtpMin
-            // 
-            this.dtpMin.CustomFormat = "dd/MM";
-            this.dtpMin.Enabled = false;
-            this.dtpMin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMin.Location = new System.Drawing.Point(119, 38);
-            this.dtpMin.Name = "dtpMin";
-            this.dtpMin.Size = new System.Drawing.Size(53, 22);
-            this.dtpMin.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(37, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 16);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Từ ngày";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(37, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 16);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Đến ngày";
-            // 
-            // dtpMax
-            // 
-            this.dtpMax.CustomFormat = "dd/MM";
-            this.dtpMax.Enabled = false;
-            this.dtpMax.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMax.Location = new System.Drawing.Point(119, 66);
-            this.dtpMax.Name = "dtpMax";
-            this.dtpMax.Size = new System.Drawing.Size(53, 22);
-            this.dtpMax.TabIndex = 8;
-            // 
-            // cbxTimeLimit
-            // 
-            this.cbxTimeLimit.AutoSize = true;
-            this.cbxTimeLimit.Location = new System.Drawing.Point(16, 12);
-            this.cbxTimeLimit.Name = "cbxTimeLimit";
-            this.cbxTimeLimit.Size = new System.Drawing.Size(163, 20);
-            this.cbxTimeLimit.TabIndex = 10;
-            this.cbxTimeLimit.Text = "Giới hạn hạn nộp hồ sơ";
-            this.cbxTimeLimit.UseVisualStyleBackColor = true;
-            this.cbxTimeLimit.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // chkListBox
             // 
             this.chkListBox.FormattingEnabled = true;
             this.chkListBox.Items.AddRange(new object[] {
-            "Vị trí tuyển dụng",
-            "Chức vụ",
-            "Yêu cầu giới tính",
-            "Địa điểm làm việc",
-            "Yêu cầu độ tuổi",
-            "Mức lương",
-            "Bằng cấp tổi thiểu",
-            "Hình thức làm việc",
-            "Kinh nghiệm tối thiểu",
-            "Mô tả công việc",
-            "Yêu cầu khác",
-            "Hồ sơ bao gồm",
-            "Hạn nộp hồ sơ",
-            "Ngày đăng tuyển",
-            "Hình thức nộp hồ sơ",
+            "Họ và tên",
+            "Ngày sinh",
+            "Giới tính",
+            "Trình độ học vấn",
+            "Tốt nghiệp năm",
+            "Ngành học",
+            "Tốt nghiệp loại",
+            "Tối nghiệp trường",
+            "Ngoại ngữ",
+            "Trình độ tin học",
+            "Bằng/chứng chỉ khác",
             "Số lượt xem",
-            "Ngành nghề tuyển dụng",
-            "Người liên hệ",
-            "Địa chỉ liên hệ",
-            "Email liên hệ",
-            "Điện thoại liên hệ",
-            "Tên công ty",
-            "Địa chỉ công ty",
-            "Website",
-            "Điện thoại công ty",
-            "Giới thiệu",
+            "Số năm kinh nghiệm",
+            "Kinh nghiệm",
+            "Các kỹ năng",
+            "Vị trí mong muốn",
+            "Cấp bậc",
+            "Ngành nghề",
+            "Hình thức làm việc",
+            "Địa điểm làm việc",
+            "Mức lương mong muốn",
+            "Mục tiêu nghê nghiệp",
+            "Tên người liên hệ",
+            "Email",
+            "Điện thoại",
             "Danh mục"});
-            this.chkListBox.Location = new System.Drawing.Point(13, 154);
+            this.chkListBox.Location = new System.Drawing.Point(9, 94);
             this.chkListBox.Name = "chkListBox";
-            this.chkListBox.Size = new System.Drawing.Size(193, 259);
+            this.chkListBox.Size = new System.Drawing.Size(193, 310);
             this.chkListBox.TabIndex = 11;
             // 
             // chxSelectAll
             // 
             this.chxSelectAll.AutoSize = true;
-            this.chxSelectAll.Location = new System.Drawing.Point(16, 132);
+            this.chxSelectAll.Location = new System.Drawing.Point(12, 68);
             this.chxSelectAll.Name = "chxSelectAll";
             this.chxSelectAll.Size = new System.Drawing.Size(190, 20);
             this.chxSelectAll.TabIndex = 13;
@@ -163,7 +106,7 @@
             // numMaxSlg
             // 
             this.numMaxSlg.Enabled = false;
-            this.numMaxSlg.Location = new System.Drawing.Point(103, 104);
+            this.numMaxSlg.Location = new System.Drawing.Point(99, 25);
             this.numMaxSlg.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -186,7 +129,7 @@
             // cbxSlg
             // 
             this.cbxSlg.AutoSize = true;
-            this.cbxSlg.Location = new System.Drawing.Point(16, 105);
+            this.cbxSlg.Location = new System.Drawing.Point(12, 26);
             this.cbxSlg.Name = "cbxSlg";
             this.cbxSlg.Size = new System.Drawing.Size(80, 20);
             this.cbxSlg.TabIndex = 17;
@@ -289,7 +232,7 @@
             this.lFileName.TabIndex = 32;
             this.lFileName.Text = "Tên mở rộng";
             // 
-            // frmVieclamtvTimViec
+            // frmVieclamtvUngVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -308,14 +251,9 @@
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.chxSelectAll);
             this.Controls.Add(this.chkListBox);
-            this.Controls.Add(this.cbxTimeLimit);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.dtpMax);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dtpMin);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmVieclamtvTimViec";
+            this.Name = "frmVieclamtvUngVien";
             this.Text = "frm08";
             this.Load += new System.EventHandler(this.frmM1_Load);
             this.Shown += new System.EventHandler(this.frmM1_Shown);
@@ -327,11 +265,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dtpMin;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dtpMax;
-        private System.Windows.Forms.CheckBox cbxTimeLimit;
         private System.Windows.Forms.CheckedListBox chkListBox;
         private System.Windows.Forms.CheckBox chxSelectAll;
         private System.Windows.Forms.Button btnRun;

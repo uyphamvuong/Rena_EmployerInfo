@@ -54,7 +54,7 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
-      <HintPath>..\..\EmployerInfoUpdate\EmployerInfoUpdate\bin\Release\Ionic.Zip.dll</HintPath>
+      <HintPath>bin\Release\Library\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -69,6 +69,18 @@
     </Compile>
     <Compile Include="FormSub\trangvangvietnam.Designer.cs">
       <DependentUpon>trangvangvietnam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSub\vieclamtvNTD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\vieclamtvNTD.Designer.cs">
+      <DependentUpon>vieclamtvNTD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSub\vieclamtvUngVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSub\vieclamtvUngVien.Designer.cs">
+      <DependentUpon>vieclamtvUngVien.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSub\vieclamtvTimViec.cs">
       <SubType>Form</SubType>
@@ -160,6 +172,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSub\trangvangvietnam.resx">
       <DependentUpon>trangvangvietnam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\vieclamtvNTD.resx">
+      <DependentUpon>vieclamtvNTD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSub\vieclamtvUngVien.resx">
+      <DependentUpon>vieclamtvUngVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSub\vieclamtvTimViec.resx">
       <DependentUpon>vieclamtvTimViec.cs</DependentUpon>

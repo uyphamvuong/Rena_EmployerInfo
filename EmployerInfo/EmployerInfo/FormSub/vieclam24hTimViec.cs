@@ -128,7 +128,6 @@ namespace EmployerInfo
                 (Application.OpenForms["frmMain"] as frmMain).SetPercentProcess(i, dt_DetailLinkFromPage.Rows.Count);
                 stt3.Text = dt.Rows[i-1][0].ToString();
                 stt4.Text = string.Format("Số trang đã duyệt: {0:##.##}/{1}... {2:##.#}%", i, dt_DetailLinkFromPage.Rows.Count, (double)i * 100 / dt_DetailLinkFromPage.Rows.Count);
-                System.Threading.Thread.Sleep(1000);
                 Application.DoEvents();                
             }
             

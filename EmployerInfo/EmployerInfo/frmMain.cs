@@ -96,10 +96,10 @@ namespace EmployerInfo
                     frm = new frmVieclamtvTimViec();
                     break;
                 case "vieclam.tv (Ứng viên)":
-                    frm = new frmVieclamtvTimViec();
+                    frm = new frmVieclamtvUngVien();
                     break;
                 case "vieclam.tv (NTD)":
-                    frm = new frmVieclamtvTimViec();
+                    frm = new frmVieclamtvNTD();
                     break;
             }
 

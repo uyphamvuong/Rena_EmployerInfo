@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace EmployerInfo
 {
-    public partial class frmVieclamtvTimViec : Form
+    public partial class frmVieclamtvUngVien : Form
     {
 
         #region # INIT #
 
-        public frmVieclamtvTimViec()
+        public frmVieclamtvUngVien()
         {
             InitializeComponent();           
         }
@@ -39,15 +39,7 @@ namespace EmployerInfo
         {
             for (int i = 0; i < chkListBox.Items.Count; i++)
                 chkListBox.SetItemChecked(i, chxSelectAll.Checked);
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            label2.Enabled = cbxTimeLimit.Checked;
-            label3.Enabled = cbxTimeLimit.Checked;
-            dtpMin.Enabled = cbxTimeLimit.Checked;
-            dtpMax.Enabled = cbxTimeLimit.Checked;
-        }        
+        }  
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
@@ -119,7 +111,7 @@ namespace EmployerInfo
             // FINISH
             btnRun.Text = "GET INFO";
             IsRun = false;
-            string filename = @"Export\Export_ViecLamTV_TimViec " + txtFileName.Text + " " + DateTime.Now.ToString("dd_MM_yyyy hh_mm_ss") + ".xlsx";
+            string filename = @"Export\Export_ViecLamTV_UngVien " + txtFileName.Text + " " + DateTime.Now.ToString("dd_MM_yyyy hh_mm_ss") + ".xlsx";
             FuncHelp.ExportExcel(dt, filename);
             Application.DoEvents();
             (Application.OpenForms["frmMain"] as frmMain).NoProcess();
@@ -155,7 +147,7 @@ namespace EmployerInfo
             stt1.Visible = true; stt1.Text = "Đang lấy dữ liệu danh mục...";
             Application.DoEvents();
 
-            string s = FuncHelp.GetSource(host + "/timkiem"), l, n, c;
+            string s = FuncHelp.GetSource(host + "/timungvien/"), l, n, c;
             s = FuncHelp.CutFromTo(s, "id='tabs2'", "id='tabs3'");
 
             while(s.IndexOf("<td>")>0)
@@ -209,20 +201,8 @@ namespace EmployerInfo
                     if (cbxSlg.Checked && numMaxSlg.Value <= dt_DetailLinkFromPage.Rows.Count) { IsBreak = true; break; }
                     s = FuncHelp.CutFrom(s, "<tr>");
                     string temp = FuncHelp.CutTo(s, "</tr>");
-                    string li = FuncHelp.CutFromTo(temp, "<a href='", "'");
-                    string da = temp.Substring(temp.LastIndexOf("<td>"), temp.Length - temp.LastIndexOf("<td>")).Trim();
-                    da = Regex.Replace(da, @"<[^>]+>|&nbsp;", "").Trim();
-                    DateTime dtime;
-                    if (!DateTime.TryParseExact(da, "dd/MM/yy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtime)) { dt_DetailLinkFromPage.Rows.Add(li, link["Name"]); continue; };
-                    if (cbxTimeLimit.Checked && (dtpMin.Value.Date > dtime.Date || dtime.Date > dtpMax.Value.Date))
-                    {
-                        //IsBreak = true; break;
-                        continue;
-                    }
-                    else
-                    {
-                        dt_DetailLinkFromPage.Rows.Add(li, link["Name"]);
-                    }                    
+                    string li = FuncHelp.CutFromTo(temp, "<a href='", "'");                    
+                    dt_DetailLinkFromPage.Rows.Add(li, link["Name"]);                  
                 }
                 (Application.OpenForms["frmMain"] as frmMain).SetPercentProcess(i, page_max);
                 stt3.Text = string.Format("Đang lấy trang {0}/{1} trang // Số dữ liệu thật: {2:##,##} link", i, page_max, totalitem);
@@ -240,92 +220,88 @@ namespace EmployerInfo
             s = FuncHelp.CutFrom(s, "<div id='main-left'>");
             s = WebUtility.HtmlDecode(s);
 
-            string vitrituyendung = FuncHelp.CutFromTo(s, "Vị trí tuyển dụng:</b></td>", "</td>").Trim();
-            string chucvu = FuncHelp.CutFromTo(s, "Chức vụ:</b></td>", "</td>").Trim();
-            string yeucaugioitinh = FuncHelp.CutFromTo(s, "Yêu cầu giới tính:</b></td>", "</td>").Trim();            
+            string hovaten = FuncHelp.CutFromTo(s, "Họ và tên:</b></td>", "</td>").Trim();
+            string ngaysinh = FuncHelp.CutFromTo(s, "Ngày sinh:</b></td>", "</td>").Trim();
+            string gioitinh = FuncHelp.CutFromTo(s, "Giới tính:</b></td>", "</td>").Trim();            
             string danhmuc = link["Name"].ToString();
-            string diadiemlamviec = FuncHelp.CutFromTo(s, "Địa điểm làm việc:</b></td>", "</td>");
-            string yeucaudotuoi = FuncHelp.CutFromTo(s, "Yêu cầu độ tuổi:</b></td>", "</td>");
-            string mucluong = FuncHelp.CutFromTo(s, "Mức lương:</b></td>", "</td>").Trim();
-            string bangcaptoithieu = FuncHelp.CutFromTo(s, "Bằng cấp tối thiểu:</b></td>", "</td>").Trim();
-            string hinhthuclamviec = FuncHelp.CutFromTo(s, "Hình thức làm việc:</b></td>", "</td>").Trim();
-            string kingnghiemtoithieu = FuncHelp.CutFromTo(s, "Kinh nghiệm tối thiểu:</b></td>", "</td>").Trim();
-            string motacongviec = FuncHelp.CutFromTo(s, "Mô tả công việc:</b></td>", "</td>").Trim();
-            string yeucaukhac = FuncHelp.CutFromTo(s, "Yêu cầu khác:</b></td>", "</td>").Trim();
-            string hosobaogom = FuncHelp.CutFromTo(s, "Hồ sơ bao gồm:</b></td>", "</td>").Trim();
-            string hannophoso = FuncHelp.CutFromTo(s, "Hạn nộp HS:</b></td>", "</td>").Trim();
-            string ngaydangtuyen = FuncHelp.CutFromTo(s, "Ngày đăng tuyển:</b></td>", "</td>").Trim();
-            string hinhthucnophoso = FuncHelp.CutFromTo(s, "Hình thức nộp hồ sơ:</b></td>", "</td>").Trim();
+            string trinhdohocvan = FuncHelp.CutFromTo(s, "Trình độ học vấn:</b></td>", "</td>");
+            string totnghiepnam = FuncHelp.CutFromTo(s, "Tốt nghiệp năm:</b></td>", "</td>");
+            string nganhhoc = FuncHelp.CutFromTo(s, "Ngành học:</b></td>", "</td>").Trim();
+            string totnghieploai = FuncHelp.CutFromTo(s, "Tốt nghiệp loại:</b></td>", "</td>").Trim();
+            string totnghieptaitruong = FuncHelp.CutFromTo(s, "Tối nghiệp tại trừờng:</b></td>", "</td>").Trim();
+            string ngoaingu = FuncHelp.CutFromTo(s, "Ngoại ngữ:</b></td>", "</td>").Trim();
+            string trinhdotinhoc = FuncHelp.CutFromTo(s, "Trình độ tin học:</b></td>", "</td>").Trim();
+            string bangchungchikhac = FuncHelp.CutFromTo(s, "Bằng/chứng chỉ khác:</b></td>", "</td>").Trim();
             string soluotxem = FuncHelp.CutFromTo(s, "Số lượt xem:</b></td>", "</td>").Trim();
-            string nganhnghetuyendung = FuncHelp.CutFromTo(s, "Ngành nghề tuyển dụng</b></td>", "</td>").Trim();
-            string nguoilienhe = FuncHelp.CutFromTo(s, "Người liên hệ:</b></td>", "</td>").Trim();
-            string diachilienhe = FuncHelp.CutFromTo(s, "Địa chỉ liên hệ:</b></td>", "</td>").Trim();
-            string emaillienhe = FuncHelp.CutFromTo(s, "Email liên hệ:</b></td>", "</td>").Trim();
-            string dienthoailienhe = FuncHelp.CutFromTo(s, "Điện thoại liên hệ:</b></td>", "</td>").Trim();
-            string tencongty = FuncHelp.CutFromTo(s, "Tên công ty:</b></td>", "</td>").Trim();
-            string diachicongty = FuncHelp.CutFromTo(s, "Địa chỉ</b></td>", "</td>").Trim();
-            string website = FuncHelp.CutFromTo(s, "Website:</b></td>", "</td>").Trim();
-            string dienthoaicongty = FuncHelp.CutFromTo(s, "Điện thoại:</b></td>", "</td>").Trim();
-            string gioithieucongty = FuncHelp.CutFromTo(s, "Giới thiệu:</b>", "</tr>").Trim();
+            string sonamkinhnghiem = FuncHelp.CutFromTo(s, "Số năm kinh nghiệm:</b></td>", "</td>").Trim();
+            string kinhnghiem = FuncHelp.CutFromTo(s, "<b>Kinh nghiệm</b></td>", "</td>").Trim();
+            string cackynang = FuncHelp.CutFromTo(s, "Các kỹ năng:</b></td>", "</td>").Trim();
+            string vitrimongmuon = FuncHelp.CutFromTo(s, "Vị trí mong muốn:</b></td>", "</td>").Trim();
+            string capbac = FuncHelp.CutFromTo(s, "Cấp bậc:</b></td>", "</td>").Trim();
+            string nganhnghe = FuncHelp.CutFromTo(s, "Ngành nghề:</b></td>", "</td>").Trim();
+            string hinhthuclamviec = FuncHelp.CutFromTo(s, "Hình thức làm việc:</b></td>", "</td>").Trim();
+            string diadiemlamviec = FuncHelp.CutFromTo(s, "Địa điểm làm việc:</b></td>", "</td>").Trim();
+            string mucluongmongmuon = FuncHelp.CutFromTo(s, "Mức lương mong muốn:</b></td>", "</td>").Trim();
+            string muctieunghenghiep = FuncHelp.CutFromTo(s, "Mục tiêu nghề nghiệp:</b></td>", "</td>").Trim();
+            string tennglienhe = FuncHelp.CutFromTo(s, "Tên người liên hệ:</b></td>", "</td>").Trim();
+            string email = FuncHelp.CutFromTo(s, "<b>Email:</b></td>", "</td>").Trim();
+            string dienthoai = FuncHelp.CutFromTo(s, "<b>Điện thoại:</b></td>", "</td>").Trim();
 
-            vitrituyendung = Regex.Replace(vitrituyendung, @"<[^>]+>|&nbsp;", "").Trim();
-            chucvu = Regex.Replace(chucvu, @"<[^>]+>|&nbsp;", "").Trim();
-            yeucaugioitinh = Regex.Replace(yeucaugioitinh, @"<[^>]+>|&nbsp;", "").Trim();
-            diadiemlamviec = Regex.Replace(diadiemlamviec, @"<[^>]+>|&nbsp;", "").Trim();
-            yeucaudotuoi = Regex.Replace(yeucaudotuoi, @"<[^>]+>|&nbsp;", "").Trim();
-            mucluong = Regex.Replace(mucluong, @"<[^>]+>|&nbsp;", "").Trim();
-            bangcaptoithieu = Regex.Replace(bangcaptoithieu, @"<[^>]+>|&nbsp;", "").Trim();
-            hinhthuclamviec = Regex.Replace(hinhthuclamviec, @"<[^>]+>|&nbsp;", "").Trim();
-            kingnghiemtoithieu = Regex.Replace(kingnghiemtoithieu, @"<[^>]+>|&nbsp;", "").Trim();
-            motacongviec = Regex.Replace(motacongviec, @"<[^>]+>|&nbsp;", "").Trim();
-            yeucaukhac = Regex.Replace(yeucaukhac, @"<[^>]+>|&nbsp;", "").Trim();
-            hosobaogom = Regex.Replace(hosobaogom, @"<[^>]+>|&nbsp;", "").Trim();
-
-            hannophoso = Regex.Replace(hannophoso, @"<[^>]+>|&nbsp;", "").Trim();
-            ngaydangtuyen = Regex.Replace(ngaydangtuyen, @"<[^>]+>|&nbsp;", "").Trim();
-            hinhthucnophoso = Regex.Replace(hinhthucnophoso, @"<[^>]+>|&nbsp;", "").Trim();
+            //vitrituyendung = Regex.Replace(vitrituyendung, @"<[^>]+>|&nbsp;", "").Trim();
+            hovaten = Regex.Replace(hovaten, @"<[^>]+>|&nbsp;", "").Trim();
+            ngaysinh = Regex.Replace(ngaysinh, @"<[^>]+>|&nbsp;", "").Trim();
+            gioitinh = Regex.Replace(gioitinh, @"<[^>]+>|&nbsp;", "").Trim();
+            trinhdohocvan = Regex.Replace(trinhdohocvan, @"<[^>]+>|&nbsp;", "").Trim();
+            totnghiepnam = Regex.Replace(totnghiepnam, @"<[^>]+>|&nbsp;", "").Trim();
+            nganhhoc = Regex.Replace(nganhhoc, @"<[^>]+>|&nbsp;", "").Trim();
+            totnghieploai = Regex.Replace(totnghieploai, @"<[^>]+>|&nbsp;", "").Trim();
+            totnghieptaitruong = Regex.Replace(totnghieptaitruong, @"<[^>]+>|&nbsp;", "").Trim();
+            ngoaingu = Regex.Replace(ngoaingu, @"<[^>]+>|&nbsp;", "").Trim();
+            trinhdotinhoc = Regex.Replace(trinhdotinhoc, @"<[^>]+>|&nbsp;", "").Trim();
+            bangchungchikhac = Regex.Replace(bangchungchikhac, @"<[^>]+>|&nbsp;", "").Trim();
             soluotxem = Regex.Replace(soluotxem, @"<[^>]+>|&nbsp;", "").Trim();
-            nganhnghetuyendung = Regex.Replace(nganhnghetuyendung, @"<[^>]+>|&nbsp;", "").Trim();
-            nguoilienhe = Regex.Replace(nguoilienhe, @"<[^>]+>|&nbsp;", "").Trim();
-            diachilienhe = Regex.Replace(diachilienhe, @"<[^>]+>|&nbsp;", "").Trim();
-            emaillienhe = Regex.Replace(emaillienhe, @"<[^>]+>|&nbsp;", "").Trim();
-            dienthoailienhe = Regex.Replace(dienthoailienhe, @"<[^>]+>|&nbsp;", "").Trim();
-            tencongty = Regex.Replace(tencongty, @"<[^>]+>|&nbsp;", "").Trim();
-            diachicongty = Regex.Replace(diachicongty, @"<[^>]+>|&nbsp;", "").Trim();
-            website = Regex.Replace(website, @"<[^>]+>|&nbsp;", "").Trim();
-            dienthoaicongty = Regex.Replace(dienthoaicongty, @"<[^>]+>|&nbsp;", "").Trim();
-            gioithieucongty = Regex.Replace(gioithieucongty, @"<[^>]+>|&nbsp;", "").Trim();
+            sonamkinhnghiem = Regex.Replace(sonamkinhnghiem, @"<[^>]+>|&nbsp;", "").Trim();
+            kinhnghiem = Regex.Replace(kinhnghiem, @"<[^>]+>|&nbsp;", "").Trim();
+            cackynang = Regex.Replace(cackynang, @"<[^>]+>|&nbsp;", "").Trim();
+            vitrimongmuon = Regex.Replace(vitrimongmuon, @"<[^>]+>|&nbsp;", "").Trim();
+            capbac = Regex.Replace(capbac, @"<[^>]+>|&nbsp;", "").Trim();
+            nganhnghe = Regex.Replace(nganhnghe, @"<[^>]+>|&nbsp;", "").Trim();
+            hinhthuclamviec = Regex.Replace(hinhthuclamviec, @"<[^>]+>|&nbsp;", "").Trim();
+            diadiemlamviec = Regex.Replace(diadiemlamviec, @"<[^>]+>|&nbsp;", "").Trim();
+            mucluongmongmuon = Regex.Replace(mucluongmongmuon, @"<[^>]+>|&nbsp;", "").Trim();
+            muctieunghenghiep = Regex.Replace(muctieunghenghiep, @"<[^>]+>|&nbsp;", "").Trim();
+            tennglienhe = Regex.Replace(tennglienhe, @"<[^>]+>|&nbsp;", "").Trim();
+            email = Regex.Replace(email, @"<[^>]+>|&nbsp;", "").Trim();
+            dienthoai = Regex.Replace(dienthoai, @"<[^>]+>|&nbsp;", "").Trim();
 
             DataRow dr = dt.NewRow();
             int i = -1;
-            if (chkListBox.GetItemChecked(0)) { i++; dr[i] = vitrituyendung; }
-            if (chkListBox.GetItemChecked(1)) { i++; dr[i] = chucvu; }
-            if (chkListBox.GetItemChecked(2)) { i++; dr[i] = yeucaugioitinh; }
-            if (chkListBox.GetItemChecked(3)) { i++; dr[i] = diadiemlamviec; }
-            if (chkListBox.GetItemChecked(4)) { i++; dr[i] = yeucaudotuoi; }
-            if (chkListBox.GetItemChecked(5)) { i++; dr[i] = mucluong; }
-            if (chkListBox.GetItemChecked(6)) { i++; dr[i] = bangcaptoithieu; }
-            if (chkListBox.GetItemChecked(7)) { i++; dr[i] = hinhthuclamviec; }
-            if (chkListBox.GetItemChecked(8)) { i++; dr[i] = kingnghiemtoithieu; }
-            if (chkListBox.GetItemChecked(9)) { i++; dr[i] = motacongviec; }
-            if (chkListBox.GetItemChecked(10)) { i++; dr[i] = yeucaukhac; }
-            if (chkListBox.GetItemChecked(11)) { i++; dr[i] = hosobaogom; }
-
-            if (chkListBox.GetItemChecked(12)) { i++; dr[i] = hannophoso; }
-            if (chkListBox.GetItemChecked(13)) { i++; dr[i] = ngaydangtuyen; }
-            if (chkListBox.GetItemChecked(14)) { i++; dr[i] = hinhthucnophoso; }
-            if (chkListBox.GetItemChecked(15)) { i++; dr[i] = soluotxem; }
-            if (chkListBox.GetItemChecked(16)) { i++; dr[i] = nganhnghetuyendung; }
-            if (chkListBox.GetItemChecked(17)) { i++; dr[i] = nguoilienhe; }
-            if (chkListBox.GetItemChecked(18)) { i++; dr[i] = diachilienhe; }
-            if (chkListBox.GetItemChecked(19)) { i++; dr[i] = emaillienhe; }
-            if (chkListBox.GetItemChecked(20)) { i++; dr[i] = dienthoailienhe; }
-            if (chkListBox.GetItemChecked(21)) { i++; dr[i] = tencongty; }
-            if (chkListBox.GetItemChecked(22)) { i++; dr[i] = diachicongty; }
-            if (chkListBox.GetItemChecked(23)) { i++; dr[i] = website; }
-            if (chkListBox.GetItemChecked(24)) { i++; dr[i] = dienthoaicongty; }
-            if (chkListBox.GetItemChecked(25)) { i++; dr[i] = gioithieucongty; }
-            if (chkListBox.GetItemChecked(26)) { i++; dr[i] = danhmuc; }
+            if (chkListBox.GetItemChecked(0)) { i++; dr[i] = hovaten; }
+            if (chkListBox.GetItemChecked(1)) { i++; dr[i] = ngaysinh; }
+            if (chkListBox.GetItemChecked(2)) { i++; dr[i] = gioitinh; }
+            if (chkListBox.GetItemChecked(3)) { i++; dr[i] = trinhdohocvan; }
+            if (chkListBox.GetItemChecked(4)) { i++; dr[i] = totnghiepnam; }
+            if (chkListBox.GetItemChecked(5)) { i++; dr[i] = nganhhoc; }
+            if (chkListBox.GetItemChecked(6)) { i++; dr[i] = totnghieploai; }
+            if (chkListBox.GetItemChecked(7)) { i++; dr[i] = totnghieptaitruong; }
+            if (chkListBox.GetItemChecked(8)) { i++; dr[i] = ngoaingu; }
+            if (chkListBox.GetItemChecked(9)) { i++; dr[i] = trinhdotinhoc; }
+            if (chkListBox.GetItemChecked(10)) { i++; dr[i] = bangchungchikhac; }
+            if (chkListBox.GetItemChecked(11)) { i++; dr[i] = soluotxem; }
+            if (chkListBox.GetItemChecked(12)) { i++; dr[i] = sonamkinhnghiem; }
+            if (chkListBox.GetItemChecked(13)) { i++; dr[i] = kinhnghiem; }
+            if (chkListBox.GetItemChecked(14)) { i++; dr[i] = cackynang; }
+            if (chkListBox.GetItemChecked(15)) { i++; dr[i] = vitrimongmuon; }
+            if (chkListBox.GetItemChecked(16)) { i++; dr[i] = capbac; }
+            if (chkListBox.GetItemChecked(17)) { i++; dr[i] = nganhnghe; }
+            if (chkListBox.GetItemChecked(18)) { i++; dr[i] = hinhthuclamviec; }
+            if (chkListBox.GetItemChecked(19)) { i++; dr[i] = diadiemlamviec; }
+            if (chkListBox.GetItemChecked(20)) { i++; dr[i] = mucluongmongmuon; }
+            if (chkListBox.GetItemChecked(21)) { i++; dr[i] = muctieunghenghiep; }
+            if (chkListBox.GetItemChecked(22)) { i++; dr[i] = tennglienhe; }
+            if (chkListBox.GetItemChecked(23)) { i++; dr[i] = email; }
+            if (chkListBox.GetItemChecked(24)) { i++; dr[i] = dienthoai; }
+            if (chkListBox.GetItemChecked(25)) { i++; dr[i] = danhmuc; }
 
             dt.Rows.Add(dr);
         }
