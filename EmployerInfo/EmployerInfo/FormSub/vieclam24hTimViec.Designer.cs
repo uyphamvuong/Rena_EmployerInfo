@@ -49,7 +49,13 @@
             this.chkListCategory = new System.Windows.Forms.CheckedListBox();
             this.txtFileName = new System.Windows.Forms.TextBox();
             this.lFileName = new System.Windows.Forms.Label();
+            this.gbAccount = new System.Windows.Forms.GroupBox();
+            this.lbPW = new System.Windows.Forms.Label();
+            this.txtPW = new System.Windows.Forms.TextBox();
+            this.lbID = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).BeginInit();
+            this.gbAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtpMin
@@ -57,7 +63,7 @@
             this.dtpMin.CustomFormat = "dd/MM";
             this.dtpMin.Enabled = false;
             this.dtpMin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMin.Location = new System.Drawing.Point(119, 38);
+            this.dtpMin.Location = new System.Drawing.Point(119, 135);
             this.dtpMin.Name = "dtpMin";
             this.dtpMin.Size = new System.Drawing.Size(53, 22);
             this.dtpMin.TabIndex = 6;
@@ -66,7 +72,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(37, 43);
+            this.label2.Location = new System.Drawing.Point(37, 140);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 16);
             this.label2.TabIndex = 7;
@@ -76,7 +82,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(37, 71);
+            this.label3.Location = new System.Drawing.Point(37, 168);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 16);
             this.label3.TabIndex = 9;
@@ -87,7 +93,7 @@
             this.dtpMax.CustomFormat = "dd/MM";
             this.dtpMax.Enabled = false;
             this.dtpMax.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMax.Location = new System.Drawing.Point(119, 66);
+            this.dtpMax.Location = new System.Drawing.Point(119, 163);
             this.dtpMax.Name = "dtpMax";
             this.dtpMax.Size = new System.Drawing.Size(53, 22);
             this.dtpMax.TabIndex = 8;
@@ -95,7 +101,7 @@
             // cbxTimeLimit
             // 
             this.cbxTimeLimit.AutoSize = true;
-            this.cbxTimeLimit.Location = new System.Drawing.Point(16, 12);
+            this.cbxTimeLimit.Location = new System.Drawing.Point(16, 109);
             this.cbxTimeLimit.Name = "cbxTimeLimit";
             this.cbxTimeLimit.Size = new System.Drawing.Size(163, 20);
             this.cbxTimeLimit.TabIndex = 10;
@@ -134,15 +140,15 @@
             "Địa chỉ",
             "Quy mô",
             "Danh mục nghề"});
-            this.chkListBox.Location = new System.Drawing.Point(13, 154);
+            this.chkListBox.Location = new System.Drawing.Point(13, 256);
             this.chkListBox.Name = "chkListBox";
-            this.chkListBox.Size = new System.Drawing.Size(193, 259);
+            this.chkListBox.Size = new System.Drawing.Size(193, 157);
             this.chkListBox.TabIndex = 11;
             // 
             // chxSelectAll
             // 
             this.chxSelectAll.AutoSize = true;
-            this.chxSelectAll.Location = new System.Drawing.Point(16, 132);
+            this.chxSelectAll.Location = new System.Drawing.Point(16, 229);
             this.chxSelectAll.Name = "chxSelectAll";
             this.chxSelectAll.Size = new System.Drawing.Size(190, 20);
             this.chxSelectAll.TabIndex = 13;
@@ -165,7 +171,7 @@
             // numMaxSlg
             // 
             this.numMaxSlg.Enabled = false;
-            this.numMaxSlg.Location = new System.Drawing.Point(103, 104);
+            this.numMaxSlg.Location = new System.Drawing.Point(103, 201);
             this.numMaxSlg.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -188,7 +194,7 @@
             // cbxSlg
             // 
             this.cbxSlg.AutoSize = true;
-            this.cbxSlg.Location = new System.Drawing.Point(16, 105);
+            this.cbxSlg.Location = new System.Drawing.Point(16, 202);
             this.cbxSlg.Name = "cbxSlg";
             this.cbxSlg.Size = new System.Drawing.Size(80, 20);
             this.cbxSlg.TabIndex = 17;
@@ -312,15 +318,66 @@
             this.lFileName.AutoSize = true;
             this.lFileName.Location = new System.Drawing.Point(228, 6);
             this.lFileName.Name = "lFileName";
-            this.lFileName.Size = new System.Drawing.Size(84, 16);
+            this.lFileName.Size = new System.Drawing.Size(144, 16);
             this.lFileName.TabIndex = 32;
-            this.lFileName.Text = "Tên mở rộng";
+            this.lFileName.Text = "Tên mở rộng khi lưu file";
+            // 
+            // gbAccount
+            // 
+            this.gbAccount.Controls.Add(this.lbPW);
+            this.gbAccount.Controls.Add(this.txtPW);
+            this.gbAccount.Controls.Add(this.lbID);
+            this.gbAccount.Controls.Add(this.txtID);
+            this.gbAccount.Location = new System.Drawing.Point(7, 7);
+            this.gbAccount.Name = "gbAccount";
+            this.gbAccount.Size = new System.Drawing.Size(215, 90);
+            this.gbAccount.TabIndex = 49;
+            this.gbAccount.TabStop = false;
+            this.gbAccount.Text = "Tài khoản vieclam24h";
+            // 
+            // lbPW
+            // 
+            this.lbPW.AutoSize = true;
+            this.lbPW.Location = new System.Drawing.Point(6, 52);
+            this.lbPW.Name = "lbPW";
+            this.lbPW.Size = new System.Drawing.Size(30, 16);
+            this.lbPW.TabIndex = 3;
+            this.lbPW.Text = "PW";
+            // 
+            // txtPW
+            // 
+            this.txtPW.ForeColor = System.Drawing.Color.Red;
+            this.txtPW.Location = new System.Drawing.Point(42, 49);
+            this.txtPW.Name = "txtPW";
+            this.txtPW.Size = new System.Drawing.Size(167, 22);
+            this.txtPW.TabIndex = 2;
+            this.txtPW.Text = "daotao";
+            this.txtPW.UseSystemPasswordChar = true;
+            // 
+            // lbID
+            // 
+            this.lbID.AutoSize = true;
+            this.lbID.Location = new System.Drawing.Point(6, 24);
+            this.lbID.Name = "lbID";
+            this.lbID.Size = new System.Drawing.Size(21, 16);
+            this.lbID.TabIndex = 1;
+            this.lbID.Text = "ID";
+            // 
+            // txtID
+            // 
+            this.txtID.ForeColor = System.Drawing.Color.Red;
+            this.txtID.Location = new System.Drawing.Point(42, 21);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(167, 22);
+            this.txtID.TabIndex = 0;
+            this.txtID.Text = "account.soft@yahoo.com";
             // 
             // frmVieclam24TimViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 436);
+            this.Controls.Add(this.gbAccount);
             this.Controls.Add(this.txtFileName);
             this.Controls.Add(this.lFileName);
             this.Controls.Add(this.chkListCategory);
@@ -349,6 +406,8 @@
             this.Load += new System.EventHandler(this.frmM1_Load);
             this.Shown += new System.EventHandler(this.frmM1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.numMaxSlg)).EndInit();
+            this.gbAccount.ResumeLayout(false);
+            this.gbAccount.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,6 +436,11 @@
         private System.Windows.Forms.CheckedListBox chkListCategory;
         private System.Windows.Forms.TextBox txtFileName;
         private System.Windows.Forms.Label lFileName;
+        private System.Windows.Forms.GroupBox gbAccount;
+        private System.Windows.Forms.Label lbPW;
+        private System.Windows.Forms.TextBox txtPW;
+        private System.Windows.Forms.Label lbID;
+        private System.Windows.Forms.TextBox txtID;
 
     }
 }

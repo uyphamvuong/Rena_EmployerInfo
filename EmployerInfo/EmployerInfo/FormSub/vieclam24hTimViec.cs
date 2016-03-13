@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -69,8 +70,8 @@ namespace EmployerInfo
 
         #endregion
 
-        bool IsStop = false, IsRun = false;
-        string host = "http://hcm.vieclam.24h.com.vn";
+        bool IsStop = false, IsRun = false, IsLogin=false;
+        string host = "https://vieclam24h.vn";
         DataTable dt_CategoryLink = new DataTable();
         DataTable dt_DetailLinkFromPage = new DataTable();
         DataTable dt_Category = new DataTable();
@@ -82,6 +83,11 @@ namespace EmployerInfo
         {
             if (IsRun) { IsStop = true; return; }
             if (!CheckInput()) { return; }
+
+            //Đăng nhập trước           
+            Get_Login();
+            if (!IsLogin) { return; }
+
 
             if (!chxGetAllCategory.Checked) {
                 for (int i = 0; i < chkListCategory.Items.Count; i++)
@@ -135,7 +141,7 @@ namespace EmployerInfo
             btnRun.Text = "GET INFO";
             IsRun = false;
             string filename = @"Export\Export_vieclam24h " + dt_Port.Rows[cbxPortList.SelectedIndex]["Name"].ToString() + " " + txtFileName.Text + " " + DateTime.Now.ToString("dd_MM_yyyy hh_mm_ss") + ".xlsx";
-            FuncHelp.ExportExcel(dt, filename);
+            FuncHelp.ExportExcel(dt, filename, new Dictionary<int,int>{{1,60}});
 
             if (MessageBox.Show("Lưu dữ liệu thành công \n\nBạn có muốn mở file đã lưu?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 Process.Start(filename);
@@ -203,54 +209,55 @@ namespace EmployerInfo
         void Get_LinkDetailFromPage(DataRow link)
         {
             stt3.Visible = true;
-            stt4.Visible = true;
+            stt4.Visible = true;            
 
-            string s = FuncHelp.GetSourceWithCookie(host + link["Link"].ToString(),ref cookieContainer);
-            s = FuncHelp.CutFromTo(s, "Kết quả tìm kiếm", "</span>").Replace("(", "").Replace(")", "").Replace(",", "").Replace(".", "");
-
-            int totalitem = Convert.ToInt32(s);
-            int page_max = totalitem;
-            page_max = Convert.ToInt32(page_max / 20) + (page_max % 20 > 0 ? 1 : 0);
-            if (page_max < 1) { return; }
-
-            //stt3.Text = string.Format("Tổng số ứng viên thật: {0:##,##} Tổng trang: {1:##,##}", Convert.ToInt32(s), pagemax);
-
-            for (int i = 1; i <= page_max; i++)
+            string s = FuncHelp.GetSourceWithCookie(host + link["Link"].ToString(), ref cookieContainer);
+            s = FuncHelp.CutFromTo(s, "javascript:loadAjaxContent('box_vieclam_xacthuc'", ";").Replace(" ", "").Replace("'", "").Replace(",", "").Replace(")", "");
+            if (s.Length < 1)
             {
-                s = FuncHelp.GetSourceWithCookie(host + link["Link"].ToString() + "&page=" + i.ToString(),ref cookieContainer);
-                bool IsBreak = false;
-                while (s.IndexOf("title-blockjob-main") > 0)
+                s = "https://vieclam24h.vn" + "/ajax/tin-tinh-phi-chia-se-2-one-col.html?container=box_vieclam_xacthuc&box_id=269%2C273%2C274";
+                string n_temp = FuncHelp.CutFrom(link["Link"] as string, "=");
+                s = s + "&nganh_nghe=" + n_temp + "&limit=5000&lay_tin_mien_phi=5000";
+            }
+            else
+            {
+                s = FuncHelp.CutTo(s, "&limit=");
+                s = s + "&limit=5000&lay_tin_mien_phi=5000";
+            }            
+
+            s = FuncHelp.GetSourceWithCookie(s, ref cookieContainer);
+            bool IsBreak = false;
+            int countitem = 0;
+            while (s.IndexOf("title-blockjob-main") > 0)
+            {
+                if (IsStop) { IsBreak = true; break; }
+                if (cbxSlg.Checked && numMaxSlg.Value <= dt_DetailLinkFromPage.Rows.Count) { IsBreak = true; break; }
+                s = FuncHelp.CutFrom(s, "title-blockjob-main");
+                string temp = FuncHelp.CutTo(s, "</span>");
+                string li = FuncHelp.CutFromTo(temp, "<a href='", "' class=");
+                string da = FuncHelp.CutFromTo(s, "Hạn nộp hồ sơ'>", "</div>").Trim();
+                da = Regex.Replace(da, @"<[^>]+>|&nbsp;", "").Trim();
+                DateTime dtime;
+                if (!DateTime.TryParseExact(da, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtime)) { dt_DetailLinkFromPage.Rows.Add(li, link["Name"]); continue; };
+                if (cbxTimeLimit.Checked && (dtpMin.Value.Date > dtime.Date || dtime.Date > dtpMax.Value.Date))
                 {
-                    if (IsStop) { IsBreak = true; break; }
-                    if (cbxSlg.Checked && numMaxSlg.Value <= dt_DetailLinkFromPage.Rows.Count) { IsBreak = true; break; }
-                    s = FuncHelp.CutFrom(s, "title-blockjob-main");
-                    string temp = FuncHelp.CutTo(s, "</span>");
-                    string li = FuncHelp.CutFromTo(temp, "<a href='", "' class=");
-                    string da = FuncHelp.CutFromTo(s, "Hạn nộp hồ sơ'>", "</div>").Trim();
-                    da = Regex.Replace(da, @"<[^>]+>|&nbsp;", "").Trim();
-                    DateTime dtime;
-                    if (!DateTime.TryParseExact(da, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtime)) { dt_DetailLinkFromPage.Rows.Add(li, link["Name"]); continue; };
-                    if (cbxTimeLimit.Checked && (dtpMin.Value.Date > dtime.Date || dtime.Date > dtpMax.Value.Date))
-                    {
-                        //IsBreak = true; break;
-                        continue;
-                    }
-                    else
-                    {
-                        dt_DetailLinkFromPage.Rows.Add(li, link["Name"]);
-                    }                    
+                    //IsBreak = true; break;
+                    continue;
                 }
-                (Application.OpenForms["frmMain"] as frmMain).SetPercentProcess(i, page_max);
-                stt3.Text = string.Format("Đang lấy trang {0}/{1} trang // Số dữ liệu thật: {2:##,##} link", i, page_max, totalitem);
-                stt4.Text = string.Format("Tổng số link đã nhận: {0}", dt_DetailLinkFromPage.Rows.Count);
-                if (IsBreak) { break; }
-                Application.DoEvents();
-            }           
+                else
+                {
+                    dt_DetailLinkFromPage.Rows.Add(li, link["Name"]);
+                    countitem++;
+                }
+            }
+            stt3.Text = string.Format("Đã lấy dữ liệu '{0}' Số link thật: {1:##,##}", link["Name"], countitem);
+            stt4.Text = string.Format("Tổng số link đã nhận: {0}", dt_DetailLinkFromPage.Rows.Count);
+            Application.DoEvents();
         }
 
         void Get_DataLink(DataRow link)
         {
-            string s = FuncHelp.GetSource(link["Link"].ToString());
+            string s = FuncHelp.GetSourceWithCookie(link["Link"].ToString(), ref cookieContainer);
             if (s == "") { IsStop = true; return; }
             
             s = FuncHelp.CutFrom(s, "block-nha-tuyen-dung");
@@ -339,6 +346,44 @@ namespace EmployerInfo
             if (chkListBox.GetItemChecked(26)) { i++; dr[i] = danhmuc; }
 
             dt.Rows.Add(dr);
+        }
+
+        void Get_Login()
+        {
+            if (IsLogin) { return; }
+            stt1.Visible = true;
+            stt1.Text = "Đang kiểm tra tài khoản...";
+            Application.DoEvents();
+
+            var request = (HttpWebRequest)WebRequest.Create(host + "/taikhoan/login");
+            request.CookieContainer = cookieContainer;
+            var postData = "username=" + txtID.Text + "&password=" + txtPW.Text;
+            var data = Encoding.ASCII.GetBytes(postData);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+            var response = (HttpWebResponse)request.GetResponse();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                var responseString = new System.IO.StreamReader(response.GetResponseStream()).ReadToEnd();
+                string json = responseString.Replace("\n", "").Replace("\t", "").Replace("\"", "'").Replace("  ", " ").Replace("  ", " ").Replace("  ", " ");
+                if (FuncHelp.CutFromTo(json, "'user_type':'", "'") == "1")
+                {
+                    stt1.Visible = false;
+                    IsLogin = true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản đăng nhập hoặc Mật khẩu không chính xác!!!");
+                    IsStop = true;
+                    stt1.Text = "";
+                }
+            }
+
         }
 
         private void frmM1_Shown(object sender, EventArgs e)

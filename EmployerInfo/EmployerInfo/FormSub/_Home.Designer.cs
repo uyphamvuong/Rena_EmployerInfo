@@ -57,7 +57,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 18);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Phiên bản 1.2.4";
+            this.label2.Text = "Phiên bản 1.2.5";
             // 
             // label3
             // 

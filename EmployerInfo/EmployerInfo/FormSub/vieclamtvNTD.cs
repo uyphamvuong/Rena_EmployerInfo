@@ -147,7 +147,7 @@ namespace EmployerInfo
             stt1.Visible = true; stt1.Text = "Đang lấy dữ liệu danh mục...";
             Application.DoEvents();
 
-            string s = FuncHelp.GetSource(host + "/tuyendung/"), l, n, c;
+            string s = FuncHelp.GetSource(host + "/tuyendung/"), l, n;
             s = FuncHelp.CutFromTo(s, "id='tabs2'", "id='tabs3'");
 
             while (s.IndexOf("<td>") > 0)
