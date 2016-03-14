@@ -79,7 +79,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(239, 18);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Cập nhật mới nhất ngày 05/10/2015";
+            this.label4.Text = "Cập nhật mới nhất ngày 13/03/2016";
             // 
             // richTextBox1
             // 

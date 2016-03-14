@@ -118,7 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>#Version 1.2.4
+    <value>#Version 1.2.5
+- Cập nhật lại cách lấy dữ liệu vieclam24h Tìm Việc
+
+#Version 1.2.4
 - Cập nhật trang "vieclam.tv" bao gồm 3 mục Tìm Việc, Ứng Viên, NTD
 - Fix lỗi giao diện
 

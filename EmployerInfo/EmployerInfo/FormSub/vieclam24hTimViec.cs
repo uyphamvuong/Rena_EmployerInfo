@@ -12,7 +12,7 @@ namespace EmployerInfo
     public partial class frmVieclam24TimViec : Form
     {
 
-        #region # INIT #
+        #region # INIT # 
 
         public frmVieclam24TimViec()
         {
@@ -41,7 +41,7 @@ namespace EmployerInfo
             dt_Port.Columns.Add("Name");
             dt_Port.Rows.Add(host + "/viec-lam-quan-ly", "Việc làm quản lý");
             dt_Port.Rows.Add(host + "/viec-lam-chuyen-mon", "Việc làm theo chuyên môn");
-            dt_Port.Rows.Add(host + "/viec-lam-lao-dong-pho-thong", "Lao động phổ thông/Nghề");
+            dt_Port.Rows.Add(host + "/viec-lam-lao-dong-pho-thong", "Lao động phổ thông - Nghề");
             dt_Port.Rows.Add(host + "/viec-lam-sinh-vien-ban-thoi-gian", "Sinh viên - Bán thời gian");
             cbxPortList.DataSource = dt_Port;
             cbxPortList.ValueMember = "Link";
